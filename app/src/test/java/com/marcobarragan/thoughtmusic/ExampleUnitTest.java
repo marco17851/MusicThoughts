@@ -1,4 +1,4 @@
-package com.marcobarragan.musicthoughts;
+package com.marcobarragan.thoughtmusic;
 
 import org.junit.Test;
 

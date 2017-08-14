@@ -1,6 +1,6 @@
-package com.marcobarragan.musicthoughts.dagger;
+package com.marcobarragan.thoughtmusic.dagger;
 
-import com.marcobarragan.musicthoughts.MainActivity;
+import com.marcobarragan.thoughtmusic.MainActivity;
 
 import javax.inject.Singleton;
 

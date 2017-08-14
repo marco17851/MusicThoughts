@@ -1,10 +1,10 @@
-package com.marcobarragan.musicthoughts.app;
+package com.marcobarragan.thoughtmusic.app;
 
 import android.app.Application;
 
-import com.marcobarragan.musicthoughts.dagger.AppComponent;
-import com.marcobarragan.musicthoughts.dagger.AppModule;
-import com.marcobarragan.musicthoughts.dagger.DaggerAppComponent;
+import com.marcobarragan.thoughtmusic.dagger.AppComponent;
+import com.marcobarragan.thoughtmusic.dagger.AppModule;
+import com.marcobarragan.thoughtmusic.dagger.DaggerAppComponent;
 
 public class MusicThoughtsApplication extends Application {
 

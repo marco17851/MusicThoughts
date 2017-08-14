@@ -1,4 +1,4 @@
-package com.marcobarragan.musicthoughts.dagger;
+package com.marcobarragan.thoughtmusic.dagger;
 
 import android.app.Application;
 import android.content.Context;

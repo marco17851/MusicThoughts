@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
+import com.marcobarragan.thoughtmusic.artists.ArtistsFragment;
+
 import javax.inject.Inject;
 
 public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
@@ -19,7 +21,16 @@ public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
-        return new Fragment();
+        switch (position) {
+            case 0:
+                return new ArtistsFragment();
+            case 1:
+                return new Fragment();
+            case 2:
+                return new Fragment();
+            default:
+                return new Fragment();
+        }
     }
 
     @Override

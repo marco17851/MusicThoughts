@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.marcobarragan.thoughtmusic.MainActivity"
+    tools:context="com.marcobarragan.thoughtmusic.main.MainActivity"
     android:id="@+id/categories_view_pager">
 
         <android.support.v4.view.PagerTitleStrip
             android:id="@+id/categories_title_strip"
+            android:background="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

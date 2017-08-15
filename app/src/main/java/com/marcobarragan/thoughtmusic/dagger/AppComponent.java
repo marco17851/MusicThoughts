@@ -1,6 +1,7 @@
 package com.marcobarragan.thoughtmusic.dagger;
 
-import com.marcobarragan.thoughtmusic.MainActivity;
+import com.marcobarragan.thoughtmusic.main.MainActivity;
+import com.marcobarragan.thoughtmusic.main.MainModule;
 
 import javax.inject.Singleton;
 
@@ -10,5 +11,4 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
 
-    void inject(MainActivity activity);
 }

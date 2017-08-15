@@ -1,14 +1,11 @@
 package com.marcobarragan.thoughtmusic.main;
 
-import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
-import com.marcobarragan.thoughtmusic.MainActivity;
 import com.marcobarragan.thoughtmusic.R;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;

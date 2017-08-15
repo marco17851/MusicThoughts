@@ -4,7 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.marcobarragan.thoughtmusic.app.MusicThoughtsApplication;
+import com.marcobarragan.thoughtmusic.app.ThoughtMusicApplication;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((MusicThoughtsApplication) getApplication()).getAppComponent().inject(this);
+        ((ThoughtMusicApplication) getApplication()).getAppComponent().inject(this);
 
         mPagerAdapter = new ThoughtMusicPagerAdapter(getSupportFragmentManager(), this);
 

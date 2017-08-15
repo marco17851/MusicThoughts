@@ -6,7 +6,7 @@ import com.marcobarragan.thoughtmusic.dagger.AppComponent;
 import com.marcobarragan.thoughtmusic.dagger.AppModule;
 import com.marcobarragan.thoughtmusic.dagger.DaggerAppComponent;
 
-public class MusicThoughtsApplication extends Application {
+public class ThoughtMusicApplication extends Application {
 
     private AppComponent mAppComponent;
 
@@ -20,7 +20,7 @@ public class MusicThoughtsApplication extends Application {
         return mAppComponent;
     }
 
-    protected AppComponent initDagger(MusicThoughtsApplication application){
+    protected AppComponent initDagger(ThoughtMusicApplication application){
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(application))
                 .build();

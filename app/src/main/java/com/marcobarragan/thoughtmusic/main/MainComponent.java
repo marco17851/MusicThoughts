@@ -10,10 +10,10 @@ import com.marcobarragan.thoughtmusic.dagger.PerActivity;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import dagger.Subcomponent;
 
 @PerActivity
-@Component(dependencies = AppComponent.class, modules = {MainModule.class})
+@Subcomponent(modules = {MainModule.class})
 public interface MainComponent {
     void inject(MainActivity mainActivity);
-
 }

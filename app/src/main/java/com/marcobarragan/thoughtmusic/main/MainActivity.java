@@ -15,21 +15,22 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
-    private ThoughtMusicPagerAdapter mPagerAdapter;
+    @Inject
+    ThoughtMusicPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getMainComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DaggerMainComponent.builder()
-                .mainModule(new MainModule(this))
-                .appComponent(((ThoughtMusicApplication) getApplication()).getAppComponent())
-                .build();
-
-        mPagerAdapter = new ThoughtMusicPagerAdapter(getSupportFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.categories_view_pager);
         mViewPager.setAdapter(mPagerAdapter);
+    }
+
+    protected MainComponent getMainComponent(){
+        return ((ThoughtMusicApplication) getApplication())
+                .getAppComponent()
+                .newMainComponent(new MainModule(this));
     }
 }

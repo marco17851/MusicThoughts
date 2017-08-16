@@ -12,8 +12,9 @@ public class ThoughtMusicApplication extends Application {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         mAppComponent = initDagger(this);
+        mAppComponent.inject(this);
+        super.onCreate();
     }
 
     public AppComponent getAppComponent(){

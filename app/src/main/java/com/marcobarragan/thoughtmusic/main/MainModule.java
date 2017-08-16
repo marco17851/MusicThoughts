@@ -11,7 +11,7 @@ import dagger.Provides;
 @Module
 public class MainModule {
 
-    private MainActivity mMainActivity;
+    private final MainActivity mMainActivity;
 
     public MainModule(MainActivity mainActivity){
         mMainActivity = mainActivity;

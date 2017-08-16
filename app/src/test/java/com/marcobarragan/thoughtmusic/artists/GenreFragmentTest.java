@@ -14,13 +14,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.robolectric.shadows.support.v4.Shadows.shadowOf;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
@@ -31,7 +29,7 @@ public class GenreFragmentTest {
 
     @Before
     public void setup(){
-        fragment = new GenreFragment();
+        fragment = GenreFragment.newInstance();
         startFragment(fragment, MainActivity.class);
     }
 

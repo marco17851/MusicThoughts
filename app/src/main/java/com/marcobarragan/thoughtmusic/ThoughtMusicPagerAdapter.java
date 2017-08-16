@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
 
     private final FragmentManager mManager;
-    private GenreFragment mGenreFragment;
+    private final GenreFragment mGenreFragment;
     private int NUM_CATEGORIES = 3;
 
     @Inject

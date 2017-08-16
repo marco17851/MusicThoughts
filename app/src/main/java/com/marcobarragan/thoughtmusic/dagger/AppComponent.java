@@ -17,4 +17,5 @@ public interface AppComponent {
     void inject(ThoughtMusicApplication application);
 
     MainComponent newMainComponent(MainModule mainModule, GenreModule genreModule);
+    GenreComponent newGenreComponent(GenreModule genreModule);
 }

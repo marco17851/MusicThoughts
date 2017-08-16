@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
+import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
     private Context mContext;
 
     @Inject
-    public GenreAdapter(@NonNull Context context) {
+    public GenreAdapter(@NonNull @ActivityContext Context context) {
         mContext = context;
         mGenres = new ArrayList<>();
         mGenres.add(new Genre("Pop", "0"));

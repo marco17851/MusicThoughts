@@ -22,10 +22,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         GenreFragment fragment = GenreFragment.newInstance();
+        GenreModule genreModule = new GenreModule(fragment);
         ((ThoughtMusicApplication) getApplication())
                 .getAppComponent()
-                .newMainComponent(new MainModule(this), new GenreModule(fragment))
+                .newMainComponent(new MainModule(this), genreModule)
                 .inject(this);
+        ((ThoughtMusicApplication) getApplication())
+                .getAppComponent()
+                .newGenreComponent(genreModule)
+                .inject(fragment);
+//        DaggerGenreComponent.builder().genreModule(genreModule).build().inject(fragment);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

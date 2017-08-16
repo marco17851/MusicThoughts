@@ -7,7 +7,8 @@ import android.os.Bundle;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
 import com.marcobarragan.thoughtmusic.app.ThoughtMusicApplication;
-import com.marcobarragan.thoughtmusic.dagger.DaggerAppComponent;
+import com.marcobarragan.thoughtmusic.genre.GenreFragment;
+import com.marcobarragan.thoughtmusic.genre.GenreModule;
 
 import javax.inject.Inject;
 
@@ -20,17 +21,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getMainComponent().inject(this);
+        GenreFragment fragment = GenreFragment.newInstance();
+        ((ThoughtMusicApplication) getApplication())
+                .getAppComponent()
+                .newMainComponent(new MainModule(this), new GenreModule(fragment))
+                .inject(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mViewPager = (ViewPager) findViewById(R.id.categories_view_pager);
         mViewPager.setAdapter(mPagerAdapter);
-    }
-
-    protected MainComponent getMainComponent(){
-        return ((ThoughtMusicApplication) getApplication())
-                .getAppComponent()
-                .newMainComponent(new MainModule(this));
     }
 }

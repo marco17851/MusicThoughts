@@ -14,10 +14,13 @@ import com.marcobarragan.thoughtmusic.models.Genre;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapterViewHolder>{
     private List<Genre> mGenres;
     private Context mContext;
 
+    @Inject
     public GenreAdapter(@NonNull Context context) {
         mContext = context;
         mGenres = new ArrayList<>();

@@ -13,11 +13,15 @@ import javax.inject.Inject;
 
 public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
 
+    private final FragmentManager mManager;
+    private GenreFragment mGenreFragment;
     private int NUM_CATEGORIES = 3;
 
     @Inject
-    public ThoughtMusicPagerAdapter(FragmentManager manager) {
+    public ThoughtMusicPagerAdapter(FragmentManager manager, GenreFragment genreFragment) {
         super(manager);
+        mManager = manager;
+        mGenreFragment = genreFragment;
     }
 
     @Override
@@ -28,7 +32,7 @@ public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
             case 1:
                 return new Fragment();
             case 2:
-                return new GenreFragment();
+                return mGenreFragment;
             default:
                 return new Fragment();
         }

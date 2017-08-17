@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
-import com.marcobarragan.thoughtmusic.app.ThoughtMusicApplication;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
 
@@ -22,21 +21,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         GenreFragment fragment = GenreFragment.newInstance();
-        GenreModule genreModule = new GenreModule(fragment);
-        ((ThoughtMusicApplication) getApplication())
-                .getAppComponent()
-                .newMainComponent(new MainModule(this), genreModule)
-                .inject(this);
-        ((ThoughtMusicApplication) getApplication())
-                .getAppComponent()
-                .newGenreComponent(genreModule)
-                .inject(fragment);
-//        DaggerGenreComponent.builder().genreModule(genreModule).build().inject(fragment);
+
+        MainComponent mainComponent = getMainComponent(fragment);
+        mainComponent.inject(this);
+        mainComponent.inject(fragment);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mViewPager = (ViewPager) findViewById(R.id.categories_view_pager);
         mViewPager.setAdapter(mPagerAdapter);
+    }
+
+    private MainComponent getMainComponent(GenreFragment fragment) {
+        return DaggerMainComponent.builder()
+                .mainModule(new MainModule(this))
+                .genreModule(new GenreModule(fragment))
+                .build();
     }
 }

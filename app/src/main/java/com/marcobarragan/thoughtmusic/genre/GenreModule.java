@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,7 +23,7 @@ public class GenreModule {
     }
 
     @Provides
-    public LinearLayoutManager providesLayoutManager(@ActivityContext Context context) {
+    public RecyclerView.LayoutManager providesLayoutManager(@ActivityContext Context context) {
         return new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
     }
 }

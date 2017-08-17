@@ -21,9 +21,6 @@ public class GenreFragment extends Fragment {
     private RecyclerView mRecyclerView;
 
     @Inject
-    LinearLayoutManager mLayoutManager;
-
-    @Inject
     GenreAdapter mGenreAdapter;
 
     public static GenreFragment newInstance() {
@@ -42,14 +39,16 @@ public class GenreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_genres, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.genres_recycler_view);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//        mGenreAdapter = new GenreAdapter(getActivity());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mGenreAdapter);
 
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     public void setGenres(List<Genre> genres) {
         mGenreAdapter.setGenres(genres);

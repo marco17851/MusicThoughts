@@ -5,13 +5,19 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.R;
+import com.marcobarragan.thoughtmusic.genre.GenreAdapter;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
+import com.marcobarragan.thoughtmusic.genre.GenreModule;
+import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
+import com.marcobarragan.thoughtmusic.main.MainModule;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
@@ -25,12 +31,16 @@ import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFr
 @Config(constants = BuildConfig.class)
 public class GenreFragmentTest {
 
+    MainActivity mainActivity = Robolectric.setupActivity(MainActivity.class);
     GenreFragment fragment;
 
     @Before
     public void setup(){
         fragment = GenreFragment.newInstance();
-        startFragment(fragment, MainActivity.class);
+        DaggerMainComponent.builder()
+                .mainModule(new MainModule(mainActivity))
+                .genreModule(new GenreModule(fragment)).build().inject(fragment);
+        startFragment(fragment, mainActivity.getClass());
     }
 
     @Test
@@ -46,6 +56,7 @@ public class GenreFragmentTest {
         assertNotNull(recyclerView);
 
         List<Genre> genres = getSampleGenres();
+
         fragment.setGenres(genres);
 
         // https://stackoverflow.com/a/27069766

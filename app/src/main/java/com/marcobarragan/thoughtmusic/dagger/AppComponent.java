@@ -1,7 +1,6 @@
 package com.marcobarragan.thoughtmusic.dagger;
 
 import com.marcobarragan.thoughtmusic.app.ThoughtMusicApplication;
-import com.marcobarragan.thoughtmusic.genre.GenreComponent;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainComponent;
@@ -15,7 +14,4 @@ import dagger.Component;
 @Component(modules = {AppModule.class})
 public interface AppComponent {
     void inject(ThoughtMusicApplication application);
-
-    MainComponent newMainComponent(MainModule mainModule, GenreModule genreModule);
-    GenreComponent newGenreComponent(GenreModule genreModule);
 }

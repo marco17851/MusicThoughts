@@ -51,8 +51,10 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
     }
 
     public void setGenres(List<Genre> genres){
-        mGenres = genres;
-        notifyDataSetChanged();
+        if (genres != null) {
+            mGenres = genres;
+            notifyDataSetChanged();
+        }
     }
 
     /**

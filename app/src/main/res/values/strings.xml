@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ThoughtMusic</string>
+    <string name="genre_error">Unable to get updated Genre data</string>
 </resources>

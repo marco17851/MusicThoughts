@@ -1,21 +1,14 @@
 package com.marcobarragan.thoughtmusic.fakeData;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
-import com.google.gson.internal.ObjectConstructor;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,16 +16,9 @@ import java.util.List;
 public class FakeDataRepository {
 
     public static List<Genre> getGenres() throws JSONException {
-        FileReader file = null;
-        try {
-            file = new FileReader("./genres.json");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        JsonElement element = new JsonParser().parse(file);
+        JsonElement element = new JsonParser().parse(getGenreJsonString());
         JsonArray jsonArray = (JsonArray) element.getAsJsonObject().get("genres");
 
-        System.out.println(jsonArray);
         Iterator iterator = jsonArray.iterator();
 
         List<Genre> list = new ArrayList<>();
@@ -54,5 +40,57 @@ public class FakeDataRepository {
             list.add(genre);
         }
         return list;
+    }
+
+    private static String getGenreJsonString() {
+        return "{\n" +
+                "  \"genres\": [\n" +
+                "    {\n" +
+                "      \"id\": 1,\n" +
+                "      \"title\": \"Pop\",\n" +
+                "      \"song_ids\": [1,2,3,4,5]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 2,\n" +
+                "      \"title\": \"Rock\",\n" +
+                "      \"song_ids\": [6,7,8,9,10]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 3,\n" +
+                "      \"title\": \"Rap\",\n" +
+                "      \"song_ids\": [6,7,8,9,10]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 4,\n" +
+                "      \"title\": \"Hip-Hop\",\n" +
+                "      \"song_ids\": [11,12,13,14,15]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 5,\n" +
+                "      \"title\": \"Disco\",\n" +
+                "      \"song_ids\": [16,17,18,19,20]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 6,\n" +
+                "      \"title\": \"Classical\",\n" +
+                "      \"song_ids\": [21,22,23,24,25]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 7,\n" +
+                "      \"title\": \"Electronic\",\n" +
+                "      \"song_ids\": [26,27,28,29,30]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 8,\n" +
+                "      \"title\": \"K-Pop\",\n" +
+                "      \"song_ids\": [31,32,33,34,35]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"id\": 9,\n" +
+                "      \"title\": \"Country\",\n" +
+                "      \"song_ids\": [36,37,38,39,40]\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
     }
 }

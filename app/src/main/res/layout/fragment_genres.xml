@@ -3,6 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textColor="@color/colorError"
+        android:text="@string/genre_error"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/genres_recycler_view"
         android:layout_width="match_parent"

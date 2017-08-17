@@ -11,15 +11,15 @@ import dagger.Provides;
 
 @Module
 public class GenreModule {
-    private final GenreFragment fragment;
+    private final GenreContract.View mView;
 
-    public GenreModule(GenreFragment fragment) {
-        this.fragment = fragment;
+    public GenreModule(GenreContract.View view) {
+        mView = view;
     }
 
     @Provides
-    public GenreFragment providesFragment() {
-        return fragment;
+    GenreContract.View getView(){
+        return mView;
     }
 
     @Provides

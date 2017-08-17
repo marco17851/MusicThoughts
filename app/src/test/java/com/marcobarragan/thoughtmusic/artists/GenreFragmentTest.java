@@ -1,11 +1,14 @@
 package com.marcobarragan.thoughtmusic.artists;
 
+import android.support.transition.Visibility;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.genre.GenreAdapter;
+import com.marcobarragan.thoughtmusic.genre.GenreContract;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
 import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
@@ -23,6 +26,10 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 import static org.junit.Assert.*;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
@@ -72,11 +79,30 @@ public class GenreFragmentTest {
         assertEquals("Disco", disco.getText().toString());
     }
 
+    @Test
+    public void shouldShowErrorMessageIfThereIsGenreDataCannotBeUpdated(){
+        RecyclerView recyclerView = (RecyclerView) fragment.getView().findViewById(R.id.genres_recycler_view);
+        TextView errorMessage = (TextView) fragment.getView().findViewById(R.id.error_message);
+
+        fragment.showErrorMessage();
+
+
+        assertEquals(View.VISIBLE, errorMessage.getVisibility());
+        assertEquals("Unable to get updated Genre data", errorMessage.getText().toString());
+
+    }
+
     private List<Genre> getSampleGenres() {
         List<Genre> genres = new ArrayList<>();
-        genres.add(new Genre("Pop", "0"));
-        genres.add(new Genre("Rap", "1"));
-        genres.add(new Genre("Disco", "2"));
+
+        List<Integer> songIds = new ArrayList<>();
+        songIds.add(1);
+        songIds.add(2);
+        songIds.add(3);
+
+        genres.add(new Genre("Pop", "0", songIds));
+        genres.add(new Genre("Rap", "1", songIds));
+        genres.add(new Genre("Disco", "2", songIds));
         return genres;
     }
 

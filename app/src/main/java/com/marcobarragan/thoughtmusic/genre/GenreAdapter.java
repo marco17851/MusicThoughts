@@ -25,9 +25,6 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
     public GenreAdapter(@NonNull @ActivityContext Context context) {
         mContext = context;
         mGenres = new ArrayList<>();
-        mGenres.add(new Genre("Pop", "0"));
-        mGenres.add(new Genre("Rap", "1"));
-        mGenres.add(new Genre("Disco", "2"));
     }
 
     @Override

@@ -26,4 +26,9 @@ public class GenreModule {
     public RecyclerView.LayoutManager providesLayoutManager(@ActivityContext Context context) {
         return new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
     }
+
+    @Provides
+    GenreAdapter.GenreAdapterOnClickHandler providesGenreOnClickHandler(){
+        return (GenreAdapter.GenreAdapterOnClickHandler) mView;
+    }
 }

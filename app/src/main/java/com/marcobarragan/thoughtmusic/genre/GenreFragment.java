@@ -1,5 +1,6 @@
 package com.marcobarragan.thoughtmusic.genre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,19 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import static dagger.internal.Preconditions.checkNotNull;
 
-public class GenreFragment extends Fragment implements GenreContract.View{
+public class GenreFragment extends Fragment implements GenreContract.View, GenreAdapter.GenreAdapterOnClickHandler{
 
     private RecyclerView mRecyclerView;
     private TextView mErrorView;
@@ -68,7 +69,12 @@ public class GenreFragment extends Fragment implements GenreContract.View{
 
     @Override
     public void setGenres(List<Genre> genres) {
-        mGenreAdapter.setGenres(genres);
+        if (mGenreAdapter.setGenres(genres)){
+            hideErrors();
+        } else {
+            showErrorMessage();
+        }
+
     }
 
     @Override
@@ -79,5 +85,16 @@ public class GenreFragment extends Fragment implements GenreContract.View{
     @Override
     public void setPresenter(GenreContract.Presenter presenter) {
         mPresenter = (GenrePresenter) checkNotNull(presenter);
+    }
+
+    @Override
+    public void onClick(List<Integer> songIds) {
+//        Toast.makeText(getActivity(), songIds.toString(), Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+        bundle.putIntegerArrayList("song_ids", (ArrayList<Integer>) songIds);
+
+        Intent intent = new Intent(getActivity(), GenreCategoryActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

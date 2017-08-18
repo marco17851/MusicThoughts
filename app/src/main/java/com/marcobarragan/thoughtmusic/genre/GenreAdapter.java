@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
@@ -21,10 +22,13 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
     private List<Genre> mGenres;
     private Context mContext;
 
+    private GenreAdapterOnClickHandler mClickHandler;
+
     @Inject
-    public GenreAdapter(@NonNull @ActivityContext Context context) {
+    public GenreAdapter(@NonNull @ActivityContext Context context, GenreAdapterOnClickHandler clickHandler) {
         mContext = context;
         mGenres = new ArrayList<>();
+        mClickHandler = clickHandler;
     }
 
     @Override
@@ -50,10 +54,13 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
         return mGenres.size();
     }
 
-    public void setGenres(List<Genre> genres){
-        if (genres != null) {
+    public boolean setGenres(List<Genre> genres){
+        if (genres != null && genres.size() > 0) {
             mGenres = genres;
             notifyDataSetChanged();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -62,13 +69,25 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreAdapter
      * a cache of the child views for a forecast item. It's also a convenient place to set an
      * OnClickListener, since it has access to the adapter and the views.
      */
-    public class GenreAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class GenreAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView titleView;
 
         GenreAdapterViewHolder(View view) {
             super(view);
+            view.setOnClickListener(this);
             titleView = (TextView) view.findViewById(R.id.genre_list_title);
         }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            List<Integer> songIds = mGenres.get(position).getSongIds();
+            mClickHandler.onClick(songIds);
+        }
+    }
+
+    public interface GenreAdapterOnClickHandler{
+        void onClick(List<Integer> songIds);
     }
 }

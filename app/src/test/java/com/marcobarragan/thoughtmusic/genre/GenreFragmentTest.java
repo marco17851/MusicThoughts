@@ -1,5 +1,6 @@
-package com.marcobarragan.thoughtmusic.artists;
+package com.marcobarragan.thoughtmusic.genre;
 
+import android.content.Intent;
 import android.support.transition.Visibility;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.marcobarragan.thoughtmusic.genre.GenreAdapter;
 import com.marcobarragan.thoughtmusic.genre.GenreContract;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
+import com.marcobarragan.thoughtmusic.genre.fakeData.FakeGenreData;
 import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainModule;
@@ -23,6 +25,8 @@ import org.mockito.Mock;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowIntent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,8 @@ import javax.inject.Inject;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.robolectric.Shadows.shadowOf;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
@@ -62,7 +68,7 @@ public class GenreFragmentTest {
 
         assertNotNull(recyclerView);
 
-        List<Genre> genres = getSampleGenres();
+        List<Genre> genres = FakeGenreData.getSampleGenres();
 
         fragment.setGenres(genres);
 
@@ -89,22 +95,21 @@ public class GenreFragmentTest {
 
         assertEquals(View.VISIBLE, errorMessage.getVisibility());
         assertEquals("Unable to get updated Genre data", errorMessage.getText().toString());
-
     }
 
-    private List<Genre> getSampleGenres() {
-        List<Genre> genres = new ArrayList<>();
+    @Test
+    public void shouldStartGenreCategoryActivityWithSongIdsInBundle(){
+        List<Genre> genres = FakeGenreData.getSingleGenre();
 
-        List<Integer> songIds = new ArrayList<>();
-        songIds.add(1);
-        songIds.add(2);
-        songIds.add(3);
+        fragment.setGenres(genres);
 
-        genres.add(new Genre("Pop", "0", songIds));
-        genres.add(new Genre("Rap", "1", songIds));
-        genres.add(new Genre("Disco", "2", songIds));
-        return genres;
+        List<Integer> songIds = genres.get(0).getSongIds();
+        fragment.onClick(songIds);
+
+        ShadowActivity shadowActivity = shadowOf(mainActivity);
+        Intent startedIntent = shadowActivity.getNextStartedActivity();
+        ShadowIntent shadowIntent = shadowOf(startedIntent);
+        assertEquals(GenreCategoryActivity.class.toString(), shadowIntent.getIntentClass().toString());
+        assertEquals(startedIntent.getExtras().get("song_ids"), songIds);
     }
-
-
 }

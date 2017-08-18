@@ -1,4 +1,4 @@
-package com.marcobarragan.thoughtmusic.genre.fakeData;
+package com.marcobarragan.thoughtmusic.fakeTestData;
 
 import com.marcobarragan.thoughtmusic.models.Genre;
 

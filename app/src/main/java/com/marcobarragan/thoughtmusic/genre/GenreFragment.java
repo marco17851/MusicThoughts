@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.models.Genre;
+import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +93,7 @@ public class GenreFragment extends Fragment implements GenreContract.View, Genre
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList("song_ids", (ArrayList<Integer>) songIds);
 
-        Intent intent = new Intent(getActivity(), GenreCategoryActivity.class);
+        Intent intent = new Intent(getActivity(), SongsActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

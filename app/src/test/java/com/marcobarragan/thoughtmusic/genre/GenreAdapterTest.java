@@ -1,19 +1,15 @@
 package com.marcobarragan.thoughtmusic.genre;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
-import com.marcobarragan.thoughtmusic.genre.fakeData.FakeGenreData;
-import com.marcobarragan.thoughtmusic.models.Genre;
+import com.marcobarragan.thoughtmusic.fakeTestData.FakeGenreData;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#00838f</color>
     <color name="colorAccent">#f06292</color>
     <color name="pagerStripText">#FFFFFF</color>
+    <color name="colorTertiary">#757575</color>
     <color name="colorError">#b71c1c</color>
 </resources>

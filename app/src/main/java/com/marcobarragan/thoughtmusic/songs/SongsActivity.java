@@ -7,13 +7,22 @@ import android.support.v7.widget.RecyclerView;
 
 import com.marcobarragan.thoughtmusic.R;
 
-public class SongsActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+import static dagger.internal.Preconditions.checkNotNull;
+
+public class SongsActivity extends AppCompatActivity implements SongsContract.View {
 
     private RecyclerView mRecyclerView;
     private SongsAdapter mSongsAdapter;
 
+    @Inject
+    SongsPresenter mPresenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        DaggerSongsComponent.builder().songsModule(new SongsModule(this)).build().inject(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
 
@@ -21,5 +30,10 @@ public class SongsActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mSongsAdapter = new SongsAdapter(this);
         mRecyclerView.setAdapter(mSongsAdapter);
+    }
+
+    @Override
+    public void setPresenter(SongsContract.Presenter presenter) {
+        mPresenter = (SongsPresenter) checkNotNull(presenter);
     }
 }

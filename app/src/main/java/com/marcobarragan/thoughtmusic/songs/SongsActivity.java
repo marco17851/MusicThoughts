@@ -14,7 +14,9 @@ import static dagger.internal.Preconditions.checkNotNull;
 public class SongsActivity extends AppCompatActivity implements SongsContract.View {
 
     private RecyclerView mRecyclerView;
-    private SongsAdapter mSongsAdapter;
+
+    @Inject
+    SongsAdapter mSongsAdapter;
 
     @Inject
     SongsPresenter mPresenter;
@@ -28,7 +30,6 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
 
         mRecyclerView = (RecyclerView) findViewById(R.id.songs_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mSongsAdapter = new SongsAdapter(this);
         mRecyclerView.setAdapter(mSongsAdapter);
     }
 

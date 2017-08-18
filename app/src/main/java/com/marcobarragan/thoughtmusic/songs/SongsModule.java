@@ -1,5 +1,7 @@
 package com.marcobarragan.thoughtmusic.songs;
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -15,5 +17,10 @@ public class SongsModule {
     @Provides
     SongsContract.View getView(){
         return mView;
+    }
+
+    @Provides
+    public Context getActivityContext(){
+        return (Context) mView;
     }
 }

@@ -11,10 +11,13 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 
+import javax.inject.Inject;
+
 class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHolder> {
 
     private Context mContext;
 
+    @Inject
     public SongsAdapter(@NonNull @ActivityContext Context context) {
         mContext = context;
     }

@@ -1,11 +1,18 @@
 package com.marcobarragan.thoughtmusic.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Genre {
 
-    private final String category;
-    private final String categoryId;
+    @SerializedName("name")
+    private String category;
+
+    @SerializedName("id")
+    private String categoryId;
+
+    @SerializedName("song_ids")
     private List<Integer> songIds;
 
     public Genre(String category, String categoryId, List<Integer> songIds){

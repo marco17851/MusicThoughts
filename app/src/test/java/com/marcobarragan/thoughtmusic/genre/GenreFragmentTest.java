@@ -12,6 +12,7 @@ import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainModule;
 import com.marcobarragan.thoughtmusic.models.Genre;
+import com.marcobarragan.thoughtmusic.retrofit.NetModule;
 import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
 import org.junit.Before;
@@ -42,6 +43,7 @@ public class GenreFragmentTest {
         fragment = GenreFragment.newInstance();
         DaggerMainComponent.builder()
                 .mainModule(new MainModule(mainActivity))
+                .netModule(new NetModule("http://10.0.2.2:3000/"))
                 .genreModule(new GenreModule(fragment)).build().inject(fragment);
         startFragment(fragment, mainActivity.getClass());
     }

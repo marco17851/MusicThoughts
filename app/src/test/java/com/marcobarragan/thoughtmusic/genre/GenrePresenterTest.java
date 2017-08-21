@@ -19,13 +19,11 @@ import static org.mockito.Mockito.verify;
 @Config(constants = BuildConfig.class)
 public class GenrePresenterTest {
 
-    FakeDataRepository mockRepository;
     GenreContract.View mockView;
     GenrePresenter presenter;
 
     @Before
     public void setup(){
-        mockRepository = mock(FakeDataRepository.class);
         mockView = mock(GenreFragment.class);
 
         presenter = new GenrePresenter(mockView);
@@ -37,11 +35,4 @@ public class GenrePresenterTest {
 
         verify(mockView).setPresenter(presenter);
     }
-
-    @Test
-    public void shouldCallFakeDataRepositoryOnStartAndPassToView(){
-        presenter.start();
-        verify(mockView).setGenres(ArgumentMatchers.<Genre>anyList());
-    }
-
 }

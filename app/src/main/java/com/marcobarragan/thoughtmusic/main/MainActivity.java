@@ -9,6 +9,7 @@ import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
+import com.marcobarragan.thoughtmusic.retrofit.NetModule;
 
 import javax.inject.Inject;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         return DaggerMainComponent.builder()
                 .mainModule(new MainModule(this))
                 .genreModule(new GenreModule(fragment))
+                .netModule(new NetModule("http://10.0.2.2:3000/"))
                 .build();
     }
 }

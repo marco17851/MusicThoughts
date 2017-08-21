@@ -37,8 +37,8 @@ public class FakeDataRepository {
                 songIdsList.add(songId.getAsInt());
             }
 
-            Genre genre = new Genre(title, id, songIdsList);
-            list.add(genre);
+//            Genre genre = new Genre(title, id, songIdsList);
+//            list.add(genre);
         }
         return list;
     }

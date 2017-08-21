@@ -38,10 +38,4 @@ public class SongsPresenterTest {
         verify(mockView).setPresenter(presenter);
     }
 
-    @Test
-    public void shouldCallFakeDataRepositoryOnStartAndPassToView(){
-        presenter.start();
-        verify(mockView).setSongs(ArgumentMatchers.<Song>anyList());
-    }
-
 }

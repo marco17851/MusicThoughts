@@ -35,6 +35,7 @@ public class SongsActivityTest {
     public void setup(){
         bundle = new Bundle();
         intent = new Intent(Intent.ACTION_VIEW);
+        intent.putExtras(bundle);
     }
 
     @Test

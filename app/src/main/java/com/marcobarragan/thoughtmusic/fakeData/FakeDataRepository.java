@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.marcobarragan.thoughtmusic.models.Genre;
+import com.marcobarragan.thoughtmusic.models.Song;
 
 import org.json.JSONException;
 
@@ -40,6 +41,17 @@ public class FakeDataRepository {
             list.add(genre);
         }
         return list;
+    }
+
+    public static List<Song> getSongs(){
+        List<Song> songList = new ArrayList<>();
+        songList.add(new Song("Mambo No. 5", "Basic", "Hit song from 1999!"));
+        songList.add(new Song("Who Knew", "Stream", "One of the best songs by Pink!"));
+        songList.add(new Song("Poker Face", "Basic", "Ma ma ma ma"));
+        songList.add(new Song("I Love You", "Artist", "Barney's only hit single"));
+
+
+        return songList;
     }
 
     private static String getGenreJsonString() {

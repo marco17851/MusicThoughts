@@ -10,16 +10,22 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
+import com.marcobarragan.thoughtmusic.models.Song;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHolder> {
 
+    private List<Song> mSongs;
     private Context mContext;
 
     @Inject
     public SongsAdapter(@NonNull @ActivityContext Context context) {
         mContext = context;
+        mSongs = new ArrayList<>();
     }
 
     @Override
@@ -36,15 +42,26 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
     @Override
     public void onBindViewHolder(SongsAdapterViewHolder holder, int position) {
         if (getItemCount() > position) {
-            holder.titleView.setText("Mambo No. 5");
-            holder.typeView.setText("Basic");
-            holder.descriptionView.setText("Hit song from 1999!");
+            Song song = mSongs.get(position);
+            holder.titleView.setText(song.getTitle());
+            holder.typeView.setText(song.getType());
+            holder.descriptionView.setText(song.getDescription());
         }
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return mSongs.size();
+    }
+
+    public boolean setSongs(List<Song> songs) {
+        if (songs != null && songs.size() > 0) {
+            mSongs = songs;
+            notifyDataSetChanged();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public class SongsAdapterViewHolder extends RecyclerView.ViewHolder {

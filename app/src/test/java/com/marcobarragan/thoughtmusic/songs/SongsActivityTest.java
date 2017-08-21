@@ -79,7 +79,24 @@ public class SongsActivityTest {
 
         assertEquals(View.VISIBLE, errorView.getVisibility());
         assertEquals("Unable to get Song data", errorView.getText().toString());
+    }
 
+    @Test
+    public void shouldHideErrorMessageAfterObtainingSongData(){
+        songsCategoryActivity = Robolectric.buildActivity(SongsActivity.class, intent).create().get();
+
+        songsCategoryActivity.setSongs(FakeSongData.getEmptySongs());
+
+        TextView errorView = (TextView) songsCategoryActivity.findViewById(R.id.error_message);
+
+        assertNotNull(errorView);
+
+        assertEquals(View.VISIBLE, errorView.getVisibility());
+        assertEquals("Unable to get Song data", errorView.getText().toString());
+
+        songsCategoryActivity.setSongs(FakeSongData.getSampleSongs());
+
+        assertEquals(View.GONE, errorView.getVisibility());
     }
 
 }

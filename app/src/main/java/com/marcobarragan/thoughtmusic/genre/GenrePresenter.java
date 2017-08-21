@@ -40,8 +40,6 @@ public class GenrePresenter implements GenreContract.Presenter {
             @Override
             public void onResponse(Call<List<Genre>> call, Response<List<Genre>> response) {
                 List<Genre> genres = response.body();
-                System.out.println(genres.size());
-                System.out.println(response.body());
                 mView.setGenres(genres);
             }
 
@@ -49,6 +47,7 @@ public class GenrePresenter implements GenreContract.Presenter {
             public void onFailure(Call<List<Genre>> call, Throwable t) {
                 System.out.println("Error connecting to API");
                 System.out.println(call.request().toString());
+                mView.showErrorMessage();
             }
         });
 

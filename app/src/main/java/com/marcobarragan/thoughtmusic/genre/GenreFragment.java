@@ -60,6 +60,7 @@ public class GenreFragment extends Fragment implements GenreContract.View, Genre
 
     private void hideErrors() {
         mErrorView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -81,6 +82,7 @@ public class GenreFragment extends Fragment implements GenreContract.View, Genre
     @Override
     public void showErrorMessage() {
         mErrorView.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
     }
 
     @Override

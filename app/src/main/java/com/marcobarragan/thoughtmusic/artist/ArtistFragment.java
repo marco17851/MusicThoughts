@@ -1,5 +1,6 @@
 package com.marcobarragan.thoughtmusic.artist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.genre.GenreAdapter;
 import com.marcobarragan.thoughtmusic.models.Artist;
+import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -88,6 +91,11 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
 
     @Override
     public void onClick(List<Integer> songIds) {
+        Bundle bundle = new Bundle();
+        bundle.putIntegerArrayList("song_ids", (ArrayList<Integer>) songIds);
 
+        Intent intent = new Intent(getActivity(), SongsActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

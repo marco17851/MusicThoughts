@@ -23,4 +23,14 @@ public class FakeArtistData {
     public static List<Artist> getEmptyArtists() {
         return new ArrayList<Artist>();
     }
+
+    public static List<Artist> getSingleArtist() {
+        List<Artist> artists = new ArrayList<>();
+
+        List<Integer> songIds = new ArrayList<>();
+        songIds.add(1);
+
+        artists.add(new Artist("Artist1", "0", songIds, "cover"));
+        return artists;
+    }
 }

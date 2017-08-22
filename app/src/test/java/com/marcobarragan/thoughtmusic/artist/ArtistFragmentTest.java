@@ -1,5 +1,6 @@
 package com.marcobarragan.thoughtmusic.artist;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainModule;
 import com.marcobarragan.thoughtmusic.models.Artist;
 import com.marcobarragan.thoughtmusic.network.NetModule;
+import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,11 +23,14 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowIntent;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.robolectric.Shadows.shadowOf;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
@@ -56,7 +61,7 @@ public class ArtistFragmentTest {
     }
 
     @Test
-    public void shouldShowListOfThreeGenresOnRecyclerView(){
+    public void shouldShowListOfThreeArtistsOnRecyclerView(){
         RecyclerView recyclerView = (RecyclerView) fragment.getView().findViewById(R.id.artists_recycler_view);
 
         assertNotNull(recyclerView);
@@ -79,7 +84,7 @@ public class ArtistFragmentTest {
     }
 
     @Test
-    public void shouldShowErrorMessageIfThereIsGenreDataCannotBeUpdated(){
+    public void shouldShowErrorMessageIfThereIsArtistDataCannotBeUpdated(){
         RecyclerView recyclerView = (RecyclerView) fragment.getView().findViewById(R.id.artists_recycler_view);
         TextView errorMessage = (TextView) fragment.getView().findViewById(R.id.artists_error_message);
 
@@ -87,5 +92,21 @@ public class ArtistFragmentTest {
 
         assertEquals(View.VISIBLE, errorMessage.getVisibility());
         assertEquals("Unable to get updated Artist data", errorMessage.getText().toString());
+    }
+
+    @Test
+    public void shouldStartArtistCategoryActivityWithSongIdsInBundle(){
+        List<Artist> artists = FakeArtistData.getSingleArtist();
+
+        fragment.setArtists(artists);
+
+        List<Integer> songIds = artists.get(0).getSongIds();
+        fragment.onClick(songIds);
+
+        ShadowActivity shadowActivity = shadowOf(mainActivity);
+        Intent startedIntent = shadowActivity.getNextStartedActivity();
+        ShadowIntent shadowIntent = shadowOf(startedIntent);
+        assertEquals(SongsActivity.class.toString(), shadowIntent.getIntentClass().toString());
+        assertEquals(startedIntent.getExtras().get("song_ids"), songIds);
     }
 }

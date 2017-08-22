@@ -91,7 +91,6 @@ public class GenreFragment extends Fragment implements GenreContract.View, Genre
 
     @Override
     public void onClick(List<Integer> songIds) {
-//        Toast.makeText(getActivity(), songIds.toString(), Toast.LENGTH_SHORT).show();
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList("song_ids", (ArrayList<Integer>) songIds);
 

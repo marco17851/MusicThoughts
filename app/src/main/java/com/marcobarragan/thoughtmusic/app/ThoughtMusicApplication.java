@@ -5,7 +5,6 @@ import android.app.Application;
 import com.marcobarragan.thoughtmusic.dagger.AppComponent;
 import com.marcobarragan.thoughtmusic.dagger.AppModule;
 import com.marcobarragan.thoughtmusic.dagger.DaggerAppComponent;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
 
 public class ThoughtMusicApplication extends Application {
 

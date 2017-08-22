@@ -3,13 +3,12 @@ package com.marcobarragan.thoughtmusic.main;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
+import com.marcobarragan.thoughtmusic.network.NetModule;
 
 import javax.inject.Inject;
 

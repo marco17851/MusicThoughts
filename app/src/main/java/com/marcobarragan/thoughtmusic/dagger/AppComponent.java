@@ -1,11 +1,6 @@
 package com.marcobarragan.thoughtmusic.dagger;
 
 import com.marcobarragan.thoughtmusic.app.ThoughtMusicApplication;
-import com.marcobarragan.thoughtmusic.genre.GenreModule;
-import com.marcobarragan.thoughtmusic.main.MainActivity;
-import com.marcobarragan.thoughtmusic.main.MainComponent;
-import com.marcobarragan.thoughtmusic.main.MainModule;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
 
 import javax.inject.Singleton;
 

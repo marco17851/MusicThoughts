@@ -12,7 +12,7 @@ import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainModule;
 import com.marcobarragan.thoughtmusic.models.Genre;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
+import com.marcobarragan.thoughtmusic.network.NetModule;
 import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
 import org.junit.Before;

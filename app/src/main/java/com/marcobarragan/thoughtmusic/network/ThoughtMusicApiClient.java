@@ -1,4 +1,4 @@
-package com.marcobarragan.thoughtmusic.retrofit;
+package com.marcobarragan.thoughtmusic.network;
 
 import com.marcobarragan.thoughtmusic.models.Genre;
 import com.marcobarragan.thoughtmusic.models.Song;

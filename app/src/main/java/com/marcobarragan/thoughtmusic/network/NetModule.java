@@ -1,9 +1,7 @@
-package com.marcobarragan.thoughtmusic.retrofit;
+package com.marcobarragan.thoughtmusic.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

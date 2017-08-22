@@ -1,7 +1,7 @@
 package com.marcobarragan.thoughtmusic.songs;
 
 import com.marcobarragan.thoughtmusic.models.Song;
-import com.marcobarragan.thoughtmusic.retrofit.ThoughtMusicApiClient;
+import com.marcobarragan.thoughtmusic.network.ThoughtMusicApiClient;
 
 import java.util.ArrayList;
 import java.util.List;

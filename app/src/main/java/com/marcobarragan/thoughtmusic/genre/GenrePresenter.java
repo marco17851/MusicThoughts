@@ -1,7 +1,6 @@
 package com.marcobarragan.thoughtmusic.genre;
 
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
-import com.marcobarragan.thoughtmusic.retrofit.ThoughtMusicApiClient;
+import com.marcobarragan.thoughtmusic.network.ThoughtMusicApiClient;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GenrePresenter implements GenreContract.Presenter {
 

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.models.Genre;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
 import com.marcobarragan.thoughtmusic.songs.SongsActivity;
 
 import java.util.ArrayList;

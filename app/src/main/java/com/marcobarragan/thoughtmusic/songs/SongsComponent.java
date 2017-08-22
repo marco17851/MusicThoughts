@@ -1,7 +1,7 @@
 package com.marcobarragan.thoughtmusic.songs;
 
 import com.marcobarragan.thoughtmusic.dagger.PerActivity;
-import com.marcobarragan.thoughtmusic.retrofit.NetModule;
+import com.marcobarragan.thoughtmusic.network.NetModule;
 
 import dagger.Component;
 

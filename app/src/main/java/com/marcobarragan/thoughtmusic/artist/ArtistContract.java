@@ -7,7 +7,7 @@ import com.marcobarragan.thoughtmusic.models.Artist;
 import java.util.List;
 
 public class ArtistContract {
-    interface View extends BaseView<Presenter> {
+    public interface View extends BaseView<Presenter> {
         void setArtist(List<Artist> artists);
 
         void showErrorMessage();

@@ -2,7 +2,7 @@ package com.marcobarragan.thoughtmusic;
 
 import android.support.v4.app.FragmentManager;
 
-import com.marcobarragan.thoughtmusic.genre.GenreContract;
+import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 
 import org.junit.Before;
@@ -19,14 +19,16 @@ import static org.mockito.Mockito.mock;
 public class ThoughtMusicPagerAdapterTest {
 
     FragmentManager mockManager;
-    GenreFragment mockFragment;
+    ArtistFragment mockArtistFragment;
+    GenreFragment mockGenreFragment;
     ThoughtMusicPagerAdapter adapter;
 
     @Before
     public void setup(){
         mockManager = mock(FragmentManager.class);
-        mockFragment = mock(GenreFragment.class);
-        adapter = new ThoughtMusicPagerAdapter(mockManager, mockFragment);
+        mockArtistFragment = mock(ArtistFragment.class);
+        mockGenreFragment = mock(GenreFragment.class);
+        adapter = new ThoughtMusicPagerAdapter(mockManager, mockArtistFragment, mockGenreFragment);
     }
 
     @Test
@@ -40,7 +42,7 @@ public class ThoughtMusicPagerAdapterTest {
     public void shouldReturnCorrectGenreFragmentOnPositionTwo(){
         String genreTitle = "Genres";
 
-        assertEquals(mockFragment, adapter.getItem(2));
+        assertEquals(mockGenreFragment, adapter.getItem(2));
         assertEquals(genreTitle, adapter.getPageTitle(2));
     }
 

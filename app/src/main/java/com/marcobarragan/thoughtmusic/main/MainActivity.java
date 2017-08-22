@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
+import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
+import com.marcobarragan.thoughtmusic.artist.ArtistModule;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
 import com.marcobarragan.thoughtmusic.network.NetModule;
@@ -21,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        GenreFragment fragment = GenreFragment.newInstance();
+        ArtistFragment artistFragment = ArtistFragment.newInstance();
+        GenreFragment genreFragment = GenreFragment.newInstance();
 
-        MainComponent mainComponent = getMainComponent(fragment);
+        MainComponent mainComponent = getMainComponent(artistFragment, genreFragment);
         mainComponent.inject(this);
-        mainComponent.inject(fragment);
+        mainComponent.inject(artistFragment);
+        mainComponent.inject(genreFragment);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter);
     }
 
-    private MainComponent getMainComponent(GenreFragment fragment) {
+    private MainComponent getMainComponent(ArtistFragment artistFragment, GenreFragment genreFragment) {
         return DaggerMainComponent.builder()
                 .mainModule(new MainModule(this))
-                .genreModule(new GenreModule(fragment))
+                .genreModule(new GenreModule(genreFragment))
+                .artistModule(new ArtistModule(artistFragment))
                 .netModule(new NetModule("http://10.0.2.2:3000/"))
                 .build();
     }

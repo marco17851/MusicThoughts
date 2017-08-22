@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
+import com.marcobarragan.thoughtmusic.artist.ArtistContract;
 import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreContract;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
@@ -17,20 +18,22 @@ public class ThoughtMusicPagerAdapter extends FragmentPagerAdapter{
 
     private final FragmentManager mManager;
     private final GenreFragment mGenreFragment;
+    private final ArtistFragment mArtistFragment;
     private int NUM_CATEGORIES = 3;
 
     @Inject
-    public ThoughtMusicPagerAdapter(FragmentManager manager, GenreContract.View genreFragment) {
+    public ThoughtMusicPagerAdapter(FragmentManager manager, ArtistContract.View artistFragment, GenreContract.View genreFragment) {
         super(manager);
         mManager = manager;
         mGenreFragment = (GenreFragment) genreFragment;
+        mArtistFragment = (ArtistFragment) artistFragment;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new ArtistFragment();
+                return mArtistFragment;
             case 1:
                 return new Fragment();
             case 2:

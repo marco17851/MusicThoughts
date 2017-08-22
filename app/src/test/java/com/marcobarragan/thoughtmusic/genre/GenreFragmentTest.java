@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.R;
+import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
+import com.marcobarragan.thoughtmusic.artist.ArtistModule;
 import com.marcobarragan.thoughtmusic.fakeTestData.FakeGenreData;
 import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
@@ -27,6 +29,7 @@ import org.robolectric.shadows.ShadowIntent;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.robolectric.Shadows.shadowOf;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
@@ -36,14 +39,17 @@ import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFr
 public class GenreFragmentTest {
 
     MainActivity mainActivity = Robolectric.setupActivity(MainActivity.class);
+    ArtistFragment mockArtistFragment;
     GenreFragment fragment;
 
     @Before
     public void setup(){
         fragment = GenreFragment.newInstance();
+        mockArtistFragment = mock(ArtistFragment.class);
         DaggerMainComponent.builder()
                 .mainModule(new MainModule(mainActivity))
                 .netModule(new NetModule("http://10.0.2.2:3000/"))
+                .artistModule(new ArtistModule(mockArtistFragment))
                 .genreModule(new GenreModule(fragment)).build().inject(fragment);
         startFragment(fragment, mainActivity.getClass());
     }

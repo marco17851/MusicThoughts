@@ -3,6 +3,7 @@ package com.marcobarragan.thoughtmusic.network;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.marcobarragan.thoughtmusic.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -22,7 +23,7 @@ public class ImageDownloader {
             return false;
         }
 
-        RequestCreator load = mPicasso.load(url);
+        RequestCreator load = mPicasso.load(url).placeholder(R.drawable.broken_image);
         load.into(imageView);
 
         return true;

@@ -16,10 +16,15 @@ import com.marcobarragan.thoughtmusic.models.Artist;
 
 import java.util.List;
 
-public class ArtistFragment extends Fragment implements ArtistContract.View, GenreAdapter.GenreAdapterOnClickHandler {
+import javax.inject.Inject;
+
+public class ArtistFragment extends Fragment implements ArtistContract.View, ArtistAdapter.ArtistAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
     private TextView mErrorView;
+
+    @Inject
+    ArtistAdapter mArtistAdapter;
 
     public static ArtistFragment newInstance() {
         ArtistFragment fragment = new ArtistFragment();
@@ -38,9 +43,9 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Gen
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.artists_recycler_view);
         mErrorView = (TextView) view.findViewById(R.id.artists_error_message);
-//        hideErrors();
+        hideErrors();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//        mRecyclerView.setAdapter(mArtistsAdapter);
+        mRecyclerView.setAdapter(mArtistAdapter);
 
         return view;
     }
@@ -52,7 +57,16 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Gen
 
     @Override
     public void setArtist(List<Artist> artists) {
+        if (mArtistAdapter.setArtists(artists)){
+            hideErrors();
+        } else {
+            showErrorMessage();
+        }
+    }
 
+    private void hideErrors() {
+        mErrorView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

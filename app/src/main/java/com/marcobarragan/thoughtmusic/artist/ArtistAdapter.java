@@ -15,11 +15,14 @@ import com.marcobarragan.thoughtmusic.models.Artist;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistAdapterViewHolder>{
     private Context mContext;
     private List<Artist> mArtists;
     private ArtistAdapterOnClickHandler mClickHandler;
 
+    @Inject
     public ArtistAdapter(@NonNull @ActivityContext Context context, ArtistAdapterOnClickHandler clickHandler) {
         mContext = context;
         mArtists = new ArrayList<>();

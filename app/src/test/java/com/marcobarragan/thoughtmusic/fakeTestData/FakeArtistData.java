@@ -14,9 +14,9 @@ public class FakeArtistData {
         songIds.add(2);
         songIds.add(3);
 
-        artists.add(new Artist("Pop", "0", songIds, "cover"));
-        artists.add(new Artist("Rap", "1", songIds, "cover"));
-        artists.add(new Artist("Disco", "2", songIds, "cover"));
+        artists.add(new Artist("Artist1", "0", songIds, "cover"));
+        artists.add(new Artist("Artist2", "1", songIds, "cover"));
+        artists.add(new Artist("Artist3", "2", songIds, "cover"));
         return artists;
     }
 

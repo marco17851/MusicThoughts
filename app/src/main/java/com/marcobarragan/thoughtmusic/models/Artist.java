@@ -15,7 +15,7 @@ public class Artist {
     @SerializedName("song_ids")
     private List<Integer> songIds;
 
-    @SerializedName("cover")
+    @SerializedName("cover_url")
     private String cover;
 
     public Artist(String category, String categoryId, List<Integer> songIds, String cover){

@@ -61,7 +61,7 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
     }
 
     @Override
-    public void setArtist(List<Artist> artists) {
+    public void setArtists(List<Artist> artists) {
         if (mArtistAdapter.setArtists(artists)){
             hideErrors();
         } else {
@@ -78,6 +78,12 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
     public void showErrorMessage() {
         mErrorView.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.start();
     }
 
     @Override

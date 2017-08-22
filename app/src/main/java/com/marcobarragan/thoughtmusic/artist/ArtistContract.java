@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ArtistContract {
     public interface View extends BaseView<Presenter> {
-        void setArtist(List<Artist> artists);
+        void setArtists(List<Artist> artists);
 
         void showErrorMessage();
     }

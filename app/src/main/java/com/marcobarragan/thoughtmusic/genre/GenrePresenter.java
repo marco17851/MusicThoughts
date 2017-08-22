@@ -32,7 +32,7 @@ public class GenrePresenter implements GenreContract.Presenter {
     @Override
     public void start() {
         ThoughtMusicApiClient client = retrofit.create(ThoughtMusicApiClient.class);
-        Call<List<Genre>> call = client.getCategory("2");
+        Call<List<Genre>> call = client.getGenres();
 
         call.enqueue(new Callback<List<Genre>>() {
             @Override

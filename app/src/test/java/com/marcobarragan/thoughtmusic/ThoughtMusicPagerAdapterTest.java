@@ -2,6 +2,7 @@ package com.marcobarragan.thoughtmusic;
 
 import android.support.v4.app.FragmentManager;
 
+import com.marcobarragan.thoughtmusic.album.AlbumFragment;
 import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 
@@ -20,6 +21,7 @@ public class ThoughtMusicPagerAdapterTest {
 
     FragmentManager mockManager;
     ArtistFragment mockArtistFragment;
+    AlbumFragment mockAlbumFragment;
     GenreFragment mockGenreFragment;
     ThoughtMusicPagerAdapter adapter;
 
@@ -27,8 +29,9 @@ public class ThoughtMusicPagerAdapterTest {
     public void setup(){
         mockManager = mock(FragmentManager.class);
         mockArtistFragment = mock(ArtistFragment.class);
+        mockAlbumFragment = mock(AlbumFragment.class);
         mockGenreFragment = mock(GenreFragment.class);
-        adapter = new ThoughtMusicPagerAdapter(mockManager, mockArtistFragment, mockGenreFragment);
+        adapter = new ThoughtMusicPagerAdapter(mockManager, mockArtistFragment, mockAlbumFragment, mockGenreFragment);
     }
 
     @Test

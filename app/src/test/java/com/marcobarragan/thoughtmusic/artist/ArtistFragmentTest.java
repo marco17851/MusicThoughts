@@ -7,12 +7,15 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.R;
+import com.marcobarragan.thoughtmusic.album.AlbumFragment;
+import com.marcobarragan.thoughtmusic.album.AlbumModule;
 import com.marcobarragan.thoughtmusic.fakeTestData.FakeArtistData;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreModule;
 import com.marcobarragan.thoughtmusic.main.DaggerMainComponent;
 import com.marcobarragan.thoughtmusic.main.MainActivity;
 import com.marcobarragan.thoughtmusic.main.MainModule;
+import com.marcobarragan.thoughtmusic.models.Album;
 import com.marcobarragan.thoughtmusic.models.Artist;
 import com.marcobarragan.thoughtmusic.network.NetModule;
 import com.marcobarragan.thoughtmusic.songs.SongsActivity;
@@ -39,17 +42,20 @@ public class ArtistFragmentTest {
 
     ArtistFragment fragment;
     GenreFragment mockGenreFragment;
+    AlbumFragment mockAlbumFragment;
     MainActivity mainActivity = Robolectric.setupActivity(MainActivity.class);
 
     @Before
     public void setup(){
         fragment = ArtistFragment.newInstance();
         mockGenreFragment = mock(GenreFragment.class);
+        mockAlbumFragment = mock(AlbumFragment.class);
         DaggerMainComponent.builder()
                 .mainModule(new MainModule(mainActivity))
                 .netModule(new NetModule("http://10.0.2.2:3000/"))
                 .artistModule(new ArtistModule(fragment))
                 .genreModule(new GenreModule(mockGenreFragment))
+                .albumModule(new AlbumModule(mockAlbumFragment))
                 .build().inject(fragment);
         startFragment(fragment, mainActivity.getClass());
     }

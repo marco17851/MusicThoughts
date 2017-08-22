@@ -17,8 +17,14 @@ public class ImageDownloader {
         mPicasso = picasso;
     }
 
-    public void loadImageFromUrl(String url, ImageView imageView){
+    public boolean loadImageFromUrl(String url, ImageView imageView){
+        if (url == null || url.isEmpty() || imageView == null){
+            return false;
+        }
+
         RequestCreator load = mPicasso.load(url);
         load.into(imageView);
+
+        return true;
     }
 }

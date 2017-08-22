@@ -50,4 +50,24 @@ public class ImageDownloaderTest {
         verify(mockPicasso).load(url);
         verify(mockRequestCreator).into(mockImageView);
     }
+
+    @Test
+    public void shouldReturnFalseIfUrlIsEmpty(){
+        String url = "";
+        assertFalse(imageDownloader.loadImageFromUrl(url, mockImageView));
+    }
+
+
+    @Test
+    public void shouldReturnFalseIfUrlIsNull(){
+        String url = null;
+        assertFalse(imageDownloader.loadImageFromUrl(url, mockImageView));
+    }
+
+    @Test
+    public void shouldReturnFalseIfImageViewIsNull(){
+        String url = "google.com/fakeimg.jgp";
+        ImageView imageView = null;
+        assertFalse(imageDownloader.loadImageFromUrl(url, imageView));
+    }
 }

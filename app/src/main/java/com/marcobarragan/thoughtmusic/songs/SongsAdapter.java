@@ -6,12 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Song;
 import com.marcobarragan.thoughtmusic.network.ImageDownloader;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -47,6 +50,8 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
     public void onBindViewHolder(SongsAdapterViewHolder holder, int position) {
         if (getItemCount() > position) {
             Song song = mSongs.get(position);
+            mImageDownloader.loadImageFromUrl(song.getCover(), holder.coverImageView);
+
             holder.titleView.setText(song.getTitle());
             holder.typeView.setText(song.getType());
             holder.descriptionView.setText(song.getDescription());
@@ -70,12 +75,14 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
 
     public class SongsAdapterViewHolder extends RecyclerView.ViewHolder {
 
+        private ImageView coverImageView;
         private TextView titleView;
         private TextView typeView;
         private TextView descriptionView;
 
         SongsAdapterViewHolder(View view) {
             super(view);
+            coverImageView = (ImageView) view.findViewById(R.id.song_cover);
             titleView = (TextView) view.findViewById(R.id.song_title);
             typeView = (TextView) view.findViewById(R.id.song_type);
             descriptionView = (TextView) view.findViewById(R.id.song_description);

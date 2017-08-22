@@ -26,8 +26,8 @@ public class FakeSongData {
 
     public static List<Song> getSampleSongs(){
         List<Song> songList = new ArrayList<>();
-        songList.add(new Song("Mambo No. 5", new String[]{"Basic"}, "Hit song from 1999!", 1, ""));
-        songList.add(new Song("Who Knew", new String[]{"Stream"}, "One of the best songs by Pink!", 1, ""));
+        songList.add(new Song("Mambo No. 5", new String[]{"Basic"}, "Hit song from 1999!", 1, "http://storage.googleapis.com/ix_choosemuse/uploads/2016/02/android-logo.png"));
+        songList.add(new Song("Who Knew", new String[]{"Stream"}, "One of the best songs by Pink!", 1, "http://storage.googleapis.com/ix_choosemuse/uploads/2016/02/android-logo.png"));
 
         return songList;
     }

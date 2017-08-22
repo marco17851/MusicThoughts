@@ -23,7 +23,8 @@ public class ImageDownloader {
             return false;
         }
 
-        RequestCreator load = mPicasso.load(url).placeholder(R.drawable.broken_image);
+        RequestCreator requestCreator = mPicasso.load(url);
+        RequestCreator load = requestCreator.placeholder(R.drawable.broken_image);
         load.into(imageView);
 
         return true;

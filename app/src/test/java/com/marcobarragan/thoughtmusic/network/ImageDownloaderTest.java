@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
+import com.marcobarragan.thoughtmusic.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -44,6 +45,7 @@ public class ImageDownloaderTest {
         RequestCreator mockRequestCreator = mock(RequestCreator.class);
 
         when(mockPicasso.load(url)).thenReturn(mockRequestCreator);
+        when(mockRequestCreator.placeholder(R.drawable.broken_image)).thenReturn(mockRequestCreator);
 
         imageDownloader.loadImageFromUrl(url, mockImageView);
 

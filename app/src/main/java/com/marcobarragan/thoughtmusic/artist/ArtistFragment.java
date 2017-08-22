@@ -18,6 +18,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static dagger.internal.Preconditions.checkNotNull;
+
 public class ArtistFragment extends Fragment implements ArtistContract.View, ArtistAdapter.ArtistAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
@@ -25,6 +27,9 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
 
     @Inject
     ArtistAdapter mArtistAdapter;
+
+    @Inject
+    ArtistPresenter mPresenter;
 
     public static ArtistFragment newInstance() {
         ArtistFragment fragment = new ArtistFragment();
@@ -52,7 +57,7 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
 
     @Override
     public void setPresenter(ArtistContract.Presenter presenter) {
-
+        mPresenter = (ArtistPresenter) checkNotNull(presenter);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.marcobarragan.thoughtmusic.songs;
 
+import com.marcobarragan.thoughtmusic.dagger.AppComponent;
 import com.marcobarragan.thoughtmusic.dagger.PerActivity;
 import com.marcobarragan.thoughtmusic.network.NetModule;
 

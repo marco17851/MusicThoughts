@@ -3,6 +3,8 @@ package com.marcobarragan.thoughtmusic.dagger;
 import android.app.Application;
 import android.content.Context;
 
+import com.squareup.picasso.Picasso;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -28,4 +30,5 @@ public class AppModule {
     public Application provideApplication(){
         return mApplication;
     }
+
 }

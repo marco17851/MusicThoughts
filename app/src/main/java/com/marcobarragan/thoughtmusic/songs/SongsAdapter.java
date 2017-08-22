@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Song;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,12 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
 
     private List<Song> mSongs;
     private Context mContext;
+    private ImageDownloader mImageDownloader;
 
     @Inject
-    public SongsAdapter(@NonNull @ActivityContext Context context) {
+    public SongsAdapter(@NonNull @ActivityContext Context context, ImageDownloader imageDownloader) {
         mContext = context;
+        mImageDownloader = imageDownloader;
         mSongs = new ArrayList<>();
     }
 

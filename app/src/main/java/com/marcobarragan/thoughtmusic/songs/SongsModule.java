@@ -2,6 +2,8 @@ package com.marcobarragan.thoughtmusic.songs;
 
 import android.content.Context;
 
+import com.squareup.picasso.Picasso;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -22,5 +24,10 @@ public class SongsModule {
     @Provides
     public Context getActivityContext(){
         return (Context) mView;
+    }
+
+    @Provides
+    public Picasso getPicasso(){
+        return Picasso.with(getActivityContext());
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.fakeTestData.FakeSongData;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,11 +21,13 @@ public class SongsAdapterTest {
 
     SongsAdapter adapter;
     Context mockContext;
+    ImageDownloader mockImageDownloader;
 
     @Before
     public void setup(){
         mockContext = mock(Context.class);
-        adapter = new SongsAdapter(mockContext);
+        mockImageDownloader = mock(ImageDownloader.class);
+        adapter = new SongsAdapter(mockContext, mockImageDownloader);
     }
 
     @Test

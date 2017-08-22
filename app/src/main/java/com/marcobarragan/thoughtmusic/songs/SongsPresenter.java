@@ -1,10 +1,7 @@
 package com.marcobarragan.thoughtmusic.songs;
 
-import com.marcobarragan.thoughtmusic.fakeData.FakeDataRepository;
 import com.marcobarragan.thoughtmusic.models.Song;
 import com.marcobarragan.thoughtmusic.retrofit.ThoughtMusicApiClient;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;

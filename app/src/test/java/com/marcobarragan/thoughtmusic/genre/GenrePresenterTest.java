@@ -1,7 +1,6 @@
 package com.marcobarragan.thoughtmusic.genre;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
-import com.marcobarragan.thoughtmusic.fakeData.FakeDataRepository;
 import com.marcobarragan.thoughtmusic.models.Genre;
 
 import org.junit.Before;
@@ -35,4 +34,5 @@ public class GenrePresenterTest {
 
         verify(mockView).setPresenter(presenter);
     }
+
 }

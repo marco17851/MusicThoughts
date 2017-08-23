@@ -36,7 +36,7 @@
             android:fontFamily="sans-serif"
             android:padding="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:textAlignment="center"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintLeft_toRightOf="@+id/item_list_cover"

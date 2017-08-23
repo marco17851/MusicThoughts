@@ -9,11 +9,11 @@
     </style>
 
     <style name="viewPagerStripStyle">
-        <!--<item name="android:background">@color/colorPrimary</item>-->
+        <item name="android:background">@color/colorPrimary</item>
         <!--<item name="android:tabStripEnabled">@color/colorAccent</item>-->
         <item name="android:textSize">28sp</item>
         <item name="android:fontFamily">sans-serif-thin</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/pagerStripText</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
     </style>

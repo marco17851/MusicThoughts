@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#26c6da</color>
-    <color name="colorPrimaryDark">#00838f</color>
-    <color name="colorAccent">#f06292</color>
-    <color name="pagerStripText">#FFFFFF</color>
-    <color name="colorTertiary">#757575</color>
     <color name="colorError">#b71c1c</color>
+
+    <color name="colorPrimary">#9fa8da</color>
+    <color name="colorPrimaryLight">#d1d9ff</color>
+    <color name="colorPrimaryDark">#6f79a8</color>
+
+    <color name="colorSecondary">#f48fb1</color>
+    <color name="colorSecondaryLight">#ffc1e3</color>
+    <color name="colorSecondaryDark">#bf5f82</color>
+
+    <color name="colorAccent">@color/colorSecondary</color>
+
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
+    <color name="tertiaryTextColor">#757575</color>
+
+    <color name="pagerStripText">#FFFFFF</color>
 </resources>

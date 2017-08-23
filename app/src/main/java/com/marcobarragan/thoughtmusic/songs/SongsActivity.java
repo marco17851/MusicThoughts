@@ -37,6 +37,8 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Bundle extras = getIntent().getExtras();
         ArrayList<Integer> song_ids = (ArrayList<Integer>) extras.get("song_ids");
 

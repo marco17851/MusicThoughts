@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Artist;
-import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistAdap
 
     @Override
     public ArtistAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutId = R.layout.artist_list_item;
+        int layoutId = R.layout.category_list_item;
 
         View view = LayoutInflater.from(mContext).inflate(layoutId, parent, false);
 
@@ -75,8 +74,8 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistAdap
         ArtistAdapterViewHolder(View view) {
             super(view);
             view.setOnClickListener(this);
-            titleView = (TextView) view.findViewById(R.id.artist_list_title);
-            coverView = (ImageView) view.findViewById(R.id.artist_list_cover);
+            titleView = (TextView) view.findViewById(R.id.item_list_title);
+            coverView = (ImageView) view.findViewById(R.id.item_list_cover);
         }
 
         @Override

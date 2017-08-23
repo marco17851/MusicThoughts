@@ -78,9 +78,9 @@ public class AlbumFragmentTest {
         recyclerView.measure(0, 0);
         recyclerView.layout(0, 0, 100, 10000);
 
-        TextView album1 = (TextView) recyclerView.getChildAt(0).findViewById(R.id.album_list_title);
-        TextView album2 = (TextView) recyclerView.getChildAt(1).findViewById(R.id.album_list_title);
-        TextView album3 = (TextView) recyclerView.getChildAt(2).findViewById(R.id.album_list_title);
+        TextView album1 = (TextView) recyclerView.getChildAt(0).findViewById(R.id.item_list_title);
+        TextView album2 = (TextView) recyclerView.getChildAt(1).findViewById(R.id.item_list_title);
+        TextView album3 = (TextView) recyclerView.getChildAt(2).findViewById(R.id.item_list_title);
 
         assertEquals("Album1", album1.getText().toString());
         assertEquals("Album2", album2.getText().toString());

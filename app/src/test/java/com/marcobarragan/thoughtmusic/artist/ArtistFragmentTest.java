@@ -80,9 +80,9 @@ public class ArtistFragmentTest {
         recyclerView.measure(0, 0);
         recyclerView.layout(0, 0, 100, 10000);
 
-        TextView artist1 = (TextView) recyclerView.getChildAt(0).findViewById(R.id.artist_list_title);
-        TextView artist2 = (TextView) recyclerView.getChildAt(1).findViewById(R.id.artist_list_title);
-        TextView artist3 = (TextView) recyclerView.getChildAt(2).findViewById(R.id.artist_list_title);
+        TextView artist1 = (TextView) recyclerView.getChildAt(0).findViewById(R.id.item_list_title);
+        TextView artist2 = (TextView) recyclerView.getChildAt(1).findViewById(R.id.item_list_title);
+        TextView artist3 = (TextView) recyclerView.getChildAt(2).findViewById(R.id.item_list_title);
 
         assertEquals("Artist1", artist1.getText().toString());
         assertEquals("Artist2", artist2.getText().toString());

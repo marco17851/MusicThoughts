@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Album;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +43,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumAdapter
 
     @Override
     public AlbumAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutId = R.layout.album_list_item;
+        int layoutId = R.layout.category_list_item;
 
         View view = LayoutInflater.from(mContext).inflate(layoutId, parent, false);
 
@@ -53,6 +55,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumAdapter
     @Override
     public void onBindViewHolder(AlbumAdapterViewHolder holder, int position) {
         if (getItemCount() > position) {
+            Album artist = mAlbums.get(position);
+            Picasso.with(mContext).load(artist.getCover()).placeholder(R.drawable.broken_image).fit().into(holder.coverView);
             holder.titleView.setText(mAlbums.get(position).getCategory());
         }
     }
@@ -64,12 +68,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumAdapter
 
     public class AlbumAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private ImageView coverView;
         private TextView titleView;
 
         AlbumAdapterViewHolder(View view) {
             super(view);
             view.setOnClickListener(this);
-            titleView = (TextView) view.findViewById(R.id.album_list_title);
+            titleView = (TextView) view.findViewById(R.id.item_list_title);
+            coverView = (ImageView) view.findViewById(R.id.item_list_cover);
         }
 
         @Override

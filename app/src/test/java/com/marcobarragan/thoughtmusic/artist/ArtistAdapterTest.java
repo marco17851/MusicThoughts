@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.fakeTestData.FakeArtistData;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 
 import org.junit.Before;
 import org.junit.Test;

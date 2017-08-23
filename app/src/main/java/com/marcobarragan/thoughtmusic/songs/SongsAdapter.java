@@ -88,6 +88,7 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
             titleView = (TextView) view.findViewById(R.id.song_title);
             typeView = (TextView) view.findViewById(R.id.song_type);
             descriptionView = (TextView) view.findViewById(R.id.song_description);
+            view.setOnClickListener(this);
         }
 
         @Override

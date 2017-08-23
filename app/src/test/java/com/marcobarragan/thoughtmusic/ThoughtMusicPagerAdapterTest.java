@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import com.marcobarragan.thoughtmusic.album.AlbumFragment;
 import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;
+import com.marcobarragan.thoughtmusic.main.ThoughtMusicPagerAdapter;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.marcobarragan.thoughtmusic;
+package com.marcobarragan.thoughtmusic.main;
 
 import android.content.Context;
 import android.os.Bundle;

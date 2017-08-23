@@ -3,8 +3,6 @@ package com.marcobarragan.thoughtmusic.main;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.marcobarragan.thoughtmusic.ThoughtMusicPagerAdapter;
-
 import dagger.Module;
 import dagger.Provides;
 

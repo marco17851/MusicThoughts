@@ -11,11 +11,11 @@ import javax.inject.Inject;
 
 public class ImageDownloader {
 
-    private Picasso mPicasso;
+    private Context context;
 
     @Inject
-    public ImageDownloader(Picasso picasso){
-        mPicasso = picasso;
+    public ImageDownloader(Context context){
+        this.context = context;
     }
 
     public boolean loadImageFromUrl(String url, ImageView imageView){
@@ -23,7 +23,7 @@ public class ImageDownloader {
             return false;
         }
 
-        RequestCreator requestCreator = mPicasso.load(url);
+        RequestCreator requestCreator = Picasso.with(context).load(url);
         RequestCreator load = requestCreator.placeholder(R.drawable.broken_image);
         load.into(imageView);
 

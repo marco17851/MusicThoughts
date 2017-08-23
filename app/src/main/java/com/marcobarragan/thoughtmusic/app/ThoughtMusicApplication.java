@@ -5,6 +5,7 @@ import android.app.Application;
 import com.marcobarragan.thoughtmusic.dagger.AppComponent;
 import com.marcobarragan.thoughtmusic.dagger.AppModule;
 import com.marcobarragan.thoughtmusic.dagger.DaggerAppComponent;
+import com.marcobarragan.thoughtmusic.network.ImageDownloaderModule;
 
 public class ThoughtMusicApplication extends Application {
 
@@ -24,6 +25,8 @@ public class ThoughtMusicApplication extends Application {
     protected AppComponent initDagger(ThoughtMusicApplication application){
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(application))
+                .imageDownloaderModule(new ImageDownloaderModule(this))
                 .build();
     }
+
 }

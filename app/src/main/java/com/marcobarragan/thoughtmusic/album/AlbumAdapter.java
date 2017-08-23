@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Album;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,12 +24,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumAdapter
     private Context mContext;
     private List<Album> mAlbums;
     private AlbumAdapterOnClickHandler mClickHandler;
+    private ImageDownloader mImageDownloader;
 
     @Inject
-    public AlbumAdapter(@NonNull @ActivityContext Context context, AlbumAdapterOnClickHandler clickHandler) {
+    public AlbumAdapter(@NonNull @ActivityContext Context context, AlbumAdapterOnClickHandler clickHandler, ImageDownloader imageDownloader) {
         mContext = context;
         mAlbums = new ArrayList<>();
         mClickHandler = clickHandler;
+        mImageDownloader = imageDownloader;
     }
 
     public boolean setAlbums(List<Album> albums) {
@@ -55,8 +58,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumAdapter
     @Override
     public void onBindViewHolder(AlbumAdapterViewHolder holder, int position) {
         if (getItemCount() > position) {
-            Album artist = mAlbums.get(position);
-            Picasso.with(mContext).load(artist.getCover()).placeholder(R.drawable.broken_image).fit().into(holder.coverView);
+            Album album = mAlbums.get(position);
+            mImageDownloader.loadImageFromUrl(album.getCover(), holder.coverView);
             holder.titleView.setText(mAlbums.get(position).getCategory());
         }
     }

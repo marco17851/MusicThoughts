@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.fakeTestData.FakeAlbumData;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +21,14 @@ public class AlbumAdapterTest {
     AlbumAdapter adapter;
     Context mockContext;
     AlbumAdapter.AlbumAdapterOnClickHandler mockClickHandler;
+    ImageDownloader mockImageDownloader;
 
     @Before
     public void setup(){
         mockContext = mock(Context.class);
+        mockImageDownloader = mock(ImageDownloader.class);
         mockClickHandler = mock(AlbumAdapter.AlbumAdapterOnClickHandler.class);
-        adapter = new AlbumAdapter(mockContext, mockClickHandler);
+        adapter = new AlbumAdapter(mockContext, mockClickHandler, mockImageDownloader);
     }
 
     @Test

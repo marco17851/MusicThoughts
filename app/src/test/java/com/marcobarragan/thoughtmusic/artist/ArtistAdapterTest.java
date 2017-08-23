@@ -24,12 +24,14 @@ public class ArtistAdapterTest {
     ArtistAdapter adapter;
     Context mockContext;
     ArtistAdapter.ArtistAdapterOnClickHandler mockClickHandler;
+    ImageDownloader mockImageDownloader;
 
     @Before
     public void setup(){
         mockContext = mock(Context.class);
+        mockImageDownloader = mock(ImageDownloader.class);
         mockClickHandler = mock(ArtistAdapter.ArtistAdapterOnClickHandler.class);
-        adapter = new ArtistAdapter(mockContext, mockClickHandler);
+        adapter = new ArtistAdapter(mockContext, mockClickHandler, mockImageDownloader);
     }
 
     @Test

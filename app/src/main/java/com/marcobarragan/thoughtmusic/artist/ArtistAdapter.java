@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Artist;
+import com.marcobarragan.thoughtmusic.network.ImageDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,12 +24,14 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistAdap
     private Context mContext;
     private List<Artist> mArtists;
     private ArtistAdapterOnClickHandler mClickHandler;
+    private ImageDownloader mImageDownloader;
 
     @Inject
-    public ArtistAdapter(@NonNull @ActivityContext Context context, ArtistAdapterOnClickHandler clickHandler) {
+    public ArtistAdapter(@NonNull @ActivityContext Context context, ArtistAdapterOnClickHandler clickHandler, ImageDownloader imageDownloader) {
         mContext = context;
         mArtists = new ArrayList<>();
         mClickHandler = clickHandler;
+        mImageDownloader = imageDownloader;
     }
 
     public boolean setArtists(List<Artist> artists) {
@@ -56,7 +59,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistAdap
     public void onBindViewHolder(ArtistAdapterViewHolder holder, int position) {
         if (getItemCount() > position) {
             Artist artist = mArtists.get(position);
-            Picasso.with(mContext).load(artist.getCover()).placeholder(R.drawable.broken_image).fit().into(holder.coverView);
+            mImageDownloader.loadImageFromUrl(artist.getCover(), holder.coverView);
             holder.titleView.setText(mArtists.get(position).getCategory());
         }
     }

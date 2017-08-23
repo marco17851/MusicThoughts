@@ -53,7 +53,6 @@ public class ArtistFragment extends Fragment implements ArtistContract.View, Art
         mRecyclerView = (RecyclerView) view.findViewById(R.id.artists_recycler_view);
         mErrorView = (TextView) view.findViewById(R.id.artists_error_message);
         hideErrors();
-//        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mArtistAdapter);
 

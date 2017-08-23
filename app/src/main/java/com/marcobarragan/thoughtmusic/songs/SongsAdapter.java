@@ -26,11 +26,13 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
 
     private List<Song> mSongs;
     private Context mContext;
+    private SongsAdapterOnClickHandler mOnClickHandler;
     private ImageDownloader mImageDownloader;
 
     @Inject
-    public SongsAdapter(@NonNull @ActivityContext Context context, ImageDownloader imageDownloader) {
+    public SongsAdapter(@NonNull @ActivityContext Context context, SongsAdapterOnClickHandler onClickHandler, ImageDownloader imageDownloader) {
         mContext = context;
+        mOnClickHandler = onClickHandler;
         mImageDownloader = imageDownloader;
         mSongs = new ArrayList<>();
     }
@@ -73,7 +75,7 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
         }
     }
 
-    public class SongsAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class SongsAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView coverImageView;
         private TextView titleView;
@@ -87,5 +89,16 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
             typeView = (TextView) view.findViewById(R.id.song_type);
             descriptionView = (TextView) view.findViewById(R.id.song_description);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Song song = mSongs.get(position);
+            mOnClickHandler.onClick(song);
+        }
+    }
+
+    public interface SongsAdapterOnClickHandler{
+        void onClick(Song song);
     }
 }

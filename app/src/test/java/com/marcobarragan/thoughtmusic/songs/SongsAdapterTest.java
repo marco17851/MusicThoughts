@@ -22,12 +22,14 @@ public class SongsAdapterTest {
     SongsAdapter adapter;
     Context mockContext;
     ImageDownloader mockImageDownloader;
+    SongsAdapter.SongsAdapterOnClickHandler mockOnClickHandler;
 
     @Before
     public void setup(){
         mockContext = mock(Context.class);
         mockImageDownloader = mock(ImageDownloader.class);
-        adapter = new SongsAdapter(mockContext, mockImageDownloader);
+        mockOnClickHandler = mock(SongsAdapter.SongsAdapterOnClickHandler.class);
+        adapter = new SongsAdapter(mockContext, mockOnClickHandler, mockImageDownloader);
     }
 
     @Test

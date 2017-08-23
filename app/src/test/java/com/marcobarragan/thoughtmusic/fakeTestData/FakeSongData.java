@@ -35,4 +35,8 @@ public class FakeSongData {
     public static List<Song> getEmptySongs() {
         return null;
     }
+
+    public static Song getSingleSong() {
+        return new Song("Mambo No. 5", new String[]{"Basic"}, "Hit song from 1999!", 1, "http://storage.googleapis.com/ix_choosemuse/uploads/2016/02/android-logo.png");
+    }
 }

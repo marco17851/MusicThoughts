@@ -1,5 +1,6 @@
 package com.marcobarragan.thoughtmusic.songs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.models.Song;
+import com.marcobarragan.thoughtmusic.musicPlayer.MusicPlayerActivity;
 import com.marcobarragan.thoughtmusic.network.NetModule;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import javax.inject.Inject;
 
 import static dagger.internal.Preconditions.checkNotNull;
 
-public class SongsActivity extends AppCompatActivity implements SongsContract.View {
+public class SongsActivity extends AppCompatActivity implements SongsContract.View, SongsAdapter.SongsAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
 
@@ -85,5 +87,18 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
     @Override
     public void showErrorMessage() {
         mErrorView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClick(Song song) {
+        Bundle bundle = new Bundle();
+        bundle.putString("name", song.getTitle());
+        bundle.putString("description", song.getDescription());
+        bundle.putString("type", song.getType());
+        bundle.putString("cover", song.getCover());
+
+        Intent intent = new Intent(this, MusicPlayerActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

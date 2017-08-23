@@ -30,4 +30,9 @@ public class SongsModule {
     public Picasso getPicasso(){
         return Picasso.with(getActivityContext());
     }
+
+    @Provides
+    SongsAdapter.SongsAdapterOnClickHandler providesSongsOnClickHandler(){
+        return (SongsAdapter.SongsAdapterOnClickHandler) mView;
+    }
 }

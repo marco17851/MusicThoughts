@@ -27,7 +27,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity" />
         </activity>
-        <activity android:name=".musicPlayer.MusicPlayerActivity">
+        <activity android:name=".musicPlayer.MusicPlayerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
     </application>

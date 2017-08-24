@@ -21,4 +21,6 @@
     <color name="tertiaryTextColor">#757575</color>
 
     <color name="pagerStripText">@color/colorWhiteTintedPink</color>
+
+    <color name="clear">#00ffffff</color>
 </resources>

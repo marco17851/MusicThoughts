@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,21 +12,18 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.marcobarragan.thoughtmusic.R;
 import com.marcobarragan.thoughtmusic.dagger.ActivityContext;
 import com.marcobarragan.thoughtmusic.models.Song;
 import com.marcobarragan.thoughtmusic.network.ImageDownloader;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHolder> {
+public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHolder> {
 
     private List<Song> mSongs;
     private Context mContext;
@@ -112,7 +108,7 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
         }
     }
 
-    public interface SongsAdapterOnClickHandler{
+    public interface SongsAdapterOnClickHandler {
         void onClick(Song song, ActivityOptionsCompat optionsCompat);
     }
 }

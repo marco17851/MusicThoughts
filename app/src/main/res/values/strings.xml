@@ -6,4 +6,7 @@
     <string name="song_error">Unable to get Song data</string>
     <string name="title_activity_songs">Songs</string>
     <string name="cover_transition">cover</string>
+    <string name="title_transition">title</string>
+    <string name="type_transition">type</string>
+    <string name="description_transition">description</string>
 </resources>

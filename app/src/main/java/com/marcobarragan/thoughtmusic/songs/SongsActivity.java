@@ -92,17 +92,14 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
     }
 
     @Override
-    public void onClick(Song song, View view) {
+    public void onClick(Song song, ActivityOptionsCompat options) {
         Bundle bundle = new Bundle();
         bundle.putString("name", song.getTitle());
         bundle.putString("description", song.getDescription());
         bundle.putString("type", song.getType());
         bundle.putString("cover", song.getCover());
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(this,
-                        view,
-                        ViewCompat.getTransitionName(view));
+
 
         Intent intent = new Intent(this, MusicPlayerActivity.class);
         intent.putExtras(bundle);

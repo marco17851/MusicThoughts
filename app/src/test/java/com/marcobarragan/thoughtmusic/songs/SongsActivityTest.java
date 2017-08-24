@@ -3,6 +3,7 @@ package com.marcobarragan.thoughtmusic.songs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.transition.Visibility;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -113,11 +114,11 @@ public class SongsActivityTest {
         songsCategoryActivity = Robolectric.buildActivity(SongsActivity.class, intent).create().get();
 
         Song song = FakeSongData.getSingleSong();
-        ImageView mockImage = mock(ImageView.class);
+        ActivityOptionsCompat mockOptions = mock(ActivityOptionsCompat.class);
 
-        when(mockImage.getTransitionName()).thenReturn("");
+        when(mockOptions.toBundle()).thenReturn(new Bundle());
 
-        songsCategoryActivity.onClick(song, mockImage);
+        songsCategoryActivity.onClick(song, mockOptions);
 
         ShadowActivity shadowActivity = shadowOf(songsCategoryActivity);
         Intent startedIntent = shadowActivity.getNextStartedActivity();

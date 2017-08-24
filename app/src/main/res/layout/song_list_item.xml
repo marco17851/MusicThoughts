@@ -27,6 +27,7 @@
 
         <TextView
             android:id="@+id/song_title"
+            android:transitionName="@string/title_transition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -42,6 +43,7 @@
 
         <TextView
             android:id="@+id/song_type"
+            android:transitionName="@string/type_transition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/tertiaryTextColor"
@@ -55,6 +57,7 @@
 
         <TextView
             android:id="@+id/song_description"
+            android:transitionName="@string/description_transition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"

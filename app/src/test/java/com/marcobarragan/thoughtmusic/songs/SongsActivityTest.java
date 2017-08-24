@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.transition.Visibility;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.robolectric.Shadows.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
@@ -111,8 +113,11 @@ public class SongsActivityTest {
         songsCategoryActivity = Robolectric.buildActivity(SongsActivity.class, intent).create().get();
 
         Song song = FakeSongData.getSingleSong();
+        ImageView mockImage = mock(ImageView.class);
 
-        songsCategoryActivity.onClick(song);
+        when(mockImage.getTransitionName()).thenReturn("");
+
+        songsCategoryActivity.onClick(song, mockImage);
 
         ShadowActivity shadowActivity = shadowOf(songsCategoryActivity);
         Intent startedIntent = shadowActivity.getNextStartedActivity();

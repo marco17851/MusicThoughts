@@ -30,6 +30,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
+        postponeEnterTransition();
+
         Bundle bundle = getIntent().getExtras();
 
         mTitle = (TextView) findViewById(R.id.song_title);
@@ -41,5 +43,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mType.setText(bundle.getString("type"));
         mDescription.setText(bundle.getString("description"));
         mImageDownloader.loadImageFromUrl(bundle.getString("cover"), mCover);
+
+        startPostponedEnterTransition();
     }
 }

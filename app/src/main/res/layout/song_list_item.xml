@@ -18,6 +18,7 @@
 
         <ImageView
             android:id="@+id/song_cover"
+            android:transitionName="@string/cover_transition"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:layout_constraintLeft_toLeftOf="parent"

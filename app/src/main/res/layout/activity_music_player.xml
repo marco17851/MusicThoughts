@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/song_cover"
+        android:transitionName="@string/cover_transition"
         android:layout_width="300dp"
         android:layout_height="300dp"
         tools:src="@drawable/broken_image"

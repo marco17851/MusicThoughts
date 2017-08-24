@@ -2,6 +2,8 @@ package com.marcobarragan.thoughtmusic.songs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -90,15 +92,20 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
     }
 
     @Override
-    public void onClick(Song song) {
+    public void onClick(Song song, View view) {
         Bundle bundle = new Bundle();
         bundle.putString("name", song.getTitle());
         bundle.putString("description", song.getDescription());
         bundle.putString("type", song.getType());
         bundle.putString("cover", song.getCover());
 
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(this,
+                        view,
+                        ViewCompat.getTransitionName(view));
+
         Intent intent = new Intent(this, MusicPlayerActivity.class);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 }

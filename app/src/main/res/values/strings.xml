@@ -5,4 +5,5 @@
     <string name="album_error">Unable to get updated Album data</string>
     <string name="song_error">Unable to get Song data</string>
     <string name="title_activity_songs">Songs</string>
+    <string name="cover_transition">cover</string>
 </resources>

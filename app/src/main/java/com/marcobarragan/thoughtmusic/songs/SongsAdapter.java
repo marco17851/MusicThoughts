@@ -95,11 +95,11 @@ class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapterViewHol
         public void onClick(View v) {
             int position = getAdapterPosition();
             Song song = mSongs.get(position);
-            mOnClickHandler.onClick(song);
+            mOnClickHandler.onClick(song, coverImageView);
         }
     }
 
     public interface SongsAdapterOnClickHandler{
-        void onClick(Song song);
+        void onClick(Song song, View view);
     }
 }

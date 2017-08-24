@@ -3,6 +3,8 @@ package com.marcobarragan.thoughtmusic.musicPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Transition;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_music_player);
 
         postponeEnterTransition();
+        // https://stackoverflow.com/a/26748694
+        Transition fade = new Fade();
+        fade.excludeTarget(android.R.id.navigationBarBackground, true);
+        fade.excludeTarget(android.R.id.statusBarBackground, true);
+        getWindow().setExitTransition(fade);
+        getWindow().setEnterTransition(fade);
 
         Bundle bundle = getIntent().getExtras();
 

@@ -99,8 +99,6 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
         bundle.putString("type", song.getType());
         bundle.putString("cover", song.getCover());
 
-
-
         Intent intent = new Intent(this, MusicPlayerActivity.class);
         intent.putExtras(bundle);
         startActivity(intent, options.toBundle());

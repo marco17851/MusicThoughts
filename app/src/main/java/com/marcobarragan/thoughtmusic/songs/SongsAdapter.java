@@ -98,11 +98,13 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapter
             Song song = mSongs.get(position);
 
             View navBar = ((Activity) mContext).findViewById(android.R.id.navigationBarBackground);
+            View statusBar = ((Activity) mContext).findViewById(android.R.id.statusBarBackground);
             Pair<View, String> navBarPair = Pair.create(navBar, Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
+            Pair<View, String> statusBarPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
             Pair<View, String> coverPair = Pair.create((View) coverImageView, mContext.getString(R.string.cover_transition));
 
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation((Activity) mContext, coverPair, navBarPair);
+                    makeSceneTransitionAnimation((Activity) mContext, coverPair, navBarPair, statusBarPair);
 
             mOnClickHandler.onClick(song, options);
         }

@@ -28,7 +28,7 @@
                 android:value=".main.MainActivity" />
         </activity>
         <activity android:name=".musicPlayer.MusicPlayerActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/MusicPlayer">
 
         </activity>
     </application>

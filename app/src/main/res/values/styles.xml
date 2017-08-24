@@ -9,6 +9,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MusicPlayer" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="viewPagerStripStyle">
         <item name="android:background">@color/colorPrimary</item>
         <!--<item name="android:tabStripEnabled">@color/colorAccent</item>-->

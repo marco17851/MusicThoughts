@@ -10,6 +10,8 @@
     <color name="colorSecondaryLight">#ffc1e3</color>
     <color name="colorSecondaryDark">#bf5f82</color>
 
+    <color name="pageBackground">#e3f2fd</color>
+
     <color name="colorAccent">@color/colorSecondary</color>
     <color name="colorTouchSelector">#ffeeee</color>
 

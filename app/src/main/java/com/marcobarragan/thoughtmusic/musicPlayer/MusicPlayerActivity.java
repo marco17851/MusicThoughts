@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
 import android.transition.Transition;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private TextView mDescription;
     private TextView mType;
     private ImageView mCover;
+    private ImageView mPlayPause;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +49,31 @@ public class MusicPlayerActivity extends AppCompatActivity {
         mDescription = (TextView) findViewById(R.id.song_description);
         mCover = (ImageView) findViewById(R.id.song_cover);
 
+        mPlayPause = (ImageView) findViewById(R.id.play_pause_button);
+        mPlayPause.setTag(R.drawable.ic_pause);
+
         mTitle.setText(bundle.getString("name"));
         mType.setText(bundle.getString("type"));
         mDescription.setText(bundle.getString("description"));
         mImageDownloader.loadImageFromUrl(bundle.getString("cover"), mCover);
 
+        mPlayPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchPlayPause();
+            }
+        });
+
         startPostponedEnterTransition();
+    }
+
+    private void switchPlayPause() {
+        if ((Integer) mPlayPause.getTag() == R.drawable.ic_pause){
+            mPlayPause.setTag(R.drawable.ic_play);
+            mPlayPause.setImageDrawable(getDrawable(R.drawable.ic_play));
+        } else {
+            mPlayPause.setTag(R.drawable.ic_pause);
+            mPlayPause.setImageDrawable(getDrawable(R.drawable.ic_pause));
+        }
     }
 }

@@ -1,7 +1,10 @@
 package com.marcobarragan.thoughtmusic.musicPlayer;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.BuildConfig;
@@ -42,6 +45,30 @@ public class MusicPlayerActivityTest {
         assertEquals("Mambo No. 5", songTitle.getText().toString());
         assertEquals("Basic", songType.getText().toString());
         assertEquals("Hit song from 1999!", songDescription.getText().toString());
+    }
+
+    @Test
+    public void shouldShowMusicPlayerControls(){
+        musicPlayerActivity = Robolectric.buildActivity(MusicPlayerActivity.class, intent).create().get();
+
+        ImageView playPauseButton = (ImageView) musicPlayerActivity.findViewById(R.id.play_pause_button);
+        ImageView previousButton = (ImageView) musicPlayerActivity.findViewById(R.id.previous_button);
+        ImageView nextButton = (ImageView) musicPlayerActivity.findViewById(R.id.next_button);
+
+        assertEquals(View.VISIBLE, playPauseButton.getVisibility());
+        assertEquals(View.VISIBLE, previousButton.getVisibility());
+        assertEquals(View.VISIBLE, nextButton.getVisibility());
+    }
+
+    @Test
+    public void onClickPlayButtonShouldSwitchToPauseIconAndViceVersa(){
+        musicPlayerActivity = Robolectric.buildActivity(MusicPlayerActivity.class, intent).create().get();
+
+        ImageView playPauseButton = (ImageView) musicPlayerActivity.findViewById(R.id.play_pause_button);
+
+        assertEquals(R.drawable.ic_pause, playPauseButton.getTag());
+        playPauseButton.performClick();
+        assertEquals(R.drawable.ic_play, playPauseButton.getTag());
     }
 
     private Bundle getSongBundle() {

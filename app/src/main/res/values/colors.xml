@@ -11,10 +11,11 @@
     <color name="colorSecondaryLight">#fce4ec</color>
     <color name="colorSecondaryDark">#bf5f82</color>
     
+    <color name="colorAccent">@color/colorSecondary</color>
+
     <color name="gradientEnd">@color/colorWhiteTintedPink</color>
 
-    <color name="colorAccent">@color/colorSecondary</color>
-    <color name="colorTouchSelector">@color/colorWhiteTintedPink</color>
+    <color name="itemTouchSelectorColor">@color/colorWhiteTintedPink</color>
 
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#000000</color>

@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         ArtistFragment artistFragment = ArtistFragment.newInstance();
         AlbumFragment albumFragment = AlbumFragment.newInstance();
         GenreFragment genreFragment = GenreFragment.newInstance();
+        artistFragment.setRetainInstance(true);
+        albumFragment.setRetainInstance(true);
+        genreFragment.setRetainInstance(true);
 
         MainComponent mainComponent = getMainComponent(artistFragment, albumFragment, genreFragment);
         mainComponent.inject(this);

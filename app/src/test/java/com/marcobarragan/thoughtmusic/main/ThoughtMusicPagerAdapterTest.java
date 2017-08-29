@@ -1,7 +1,8 @@
-package com.marcobarragan.thoughtmusic;
+package com.marcobarragan.thoughtmusic.main;
 
 import android.support.v4.app.FragmentManager;
 
+import com.marcobarragan.thoughtmusic.BuildConfig;
 import com.marcobarragan.thoughtmusic.album.AlbumFragment;
 import com.marcobarragan.thoughtmusic.artist.ArtistFragment;
 import com.marcobarragan.thoughtmusic.genre.GenreFragment;

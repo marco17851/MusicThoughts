@@ -133,9 +133,9 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
                 .setContentTitle(song.getTitle())
                 .setContentText(song.getType())
                 .setLargeIcon(bitmap)
-//                .addAction(R.drawable.ic_previous, "Previous", null)
-//                .addAction(R.drawable.ic_pause, "Pause", null)
-//                .addAction(R.drawable.ic_next, "Next", null)
+                .addAction(R.drawable.ic_previous, "Previous", null)
+                .addAction(R.drawable.ic_pause, "Pause", null)
+                .addAction(R.drawable.ic_next, "Next", null)
                 .setStyle(new NotificationCompat.MediaStyle());
         return mBuilder;
     }

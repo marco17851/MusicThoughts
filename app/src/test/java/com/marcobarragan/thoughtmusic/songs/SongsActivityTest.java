@@ -137,8 +137,7 @@ public class SongsActivityTest {
         PendingIntent contentIntent = notification.contentIntent;
         Intent nextIntent = shadowOf(contentIntent).getSavedIntent();
 
-        String nextClassName = nextIntent.getComponent().getClassName();
-        assertThat(nextClassName, equalTo(MusicPlayerActivity.class.getName()));
+        assertThat(MusicPlayerActivity.class.getName(), equalTo(nextIntent.getComponent().getClassName()));
     }
 
     @Test

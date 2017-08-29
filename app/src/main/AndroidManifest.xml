@@ -28,6 +28,7 @@
                 android:value=".main.MainActivity" />
         </activity>
         <activity android:name=".musicPlayer.MusicPlayerActivity"
+            android:launchMode="singleTop"
             android:theme="@style/MusicPlayer">
 
         </activity>

@@ -1,6 +1,11 @@
 package com.marcobarragan.thoughtmusic.songs;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.transition.Visibility;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -23,9 +28,11 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowActivity;
 import org.robolectric.shadows.ShadowIntent;
+import org.robolectric.shadows.ShadowNotificationManager;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -38,10 +45,12 @@ public class SongsActivityTest {
     Intent intent;
     Bundle bundle;
     SongsActivity songsCategoryActivity;
+    Bitmap mockBitmap;
 
 
     @Before
     public void setup(){
+        mockBitmap = mock(Bitmap.class);
         bundle = new Bundle();
         intent = new Intent(Intent.ACTION_VIEW);
         intent.putExtras(bundle);
@@ -110,6 +119,29 @@ public class SongsActivityTest {
     }
 
     @Test
+    public void shouldStartMusicPlayerServiceWhenSongIsClicked(){
+        songsCategoryActivity = Robolectric.buildActivity(SongsActivity.class, intent).create().get();
+
+        Song song = FakeSongData.getSingleSong();
+        ActivityOptionsCompat mockOptions = mock(ActivityOptionsCompat.class);
+
+        when(mockOptions.toBundle()).thenReturn(new Bundle());
+
+        songsCategoryActivity.onClick(song, mockOptions, mockBitmap);
+
+        NotificationManager notificationService = (NotificationManager) songsCategoryActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+        ShadowNotificationManager shadowNotificationManager = shadowOf(notificationService);
+        assertThat(shadowNotificationManager.size(), equalTo(1));
+
+        Notification notification = shadowNotificationManager.getAllNotifications().get(0);
+        PendingIntent contentIntent = notification.contentIntent;
+        Intent nextIntent = shadowOf(contentIntent).getSavedIntent();
+
+        String nextClassName = nextIntent.getComponent().getClassName();
+        assertThat(nextClassName, equalTo(MusicPlayerActivity.class.getName()));
+    }
+
+    @Test
     public void shouldStartMusicPlayerActivityWhenSongIsClicked(){
         songsCategoryActivity = Robolectric.buildActivity(SongsActivity.class, intent).create().get();
 
@@ -118,7 +150,7 @@ public class SongsActivityTest {
 
         when(mockOptions.toBundle()).thenReturn(new Bundle());
 
-        songsCategoryActivity.onClick(song, mockOptions);
+        songsCategoryActivity.onClick(song, mockOptions, mockBitmap);
 
         ShadowActivity shadowActivity = shadowOf(songsCategoryActivity);
         Intent startedIntent = shadowActivity.getNextStartedActivity();

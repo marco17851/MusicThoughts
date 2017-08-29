@@ -2,6 +2,9 @@ package com.marcobarragan.thoughtmusic.songs;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
@@ -106,11 +109,14 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongsAdapter
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((Activity) mContext, coverPair, navBarPair, statusBarPair);
 
-            mOnClickHandler.onClick(song, options);
+            BitmapDrawable drawable = (BitmapDrawable) coverImageView.getDrawable();
+            Bitmap bitmap = drawable.getBitmap();
+
+            mOnClickHandler.onClick(song, options, bitmap);
         }
     }
 
     public interface SongsAdapterOnClickHandler {
-        void onClick(Song song, ActivityOptionsCompat optionsCompat);
+        void onClick(Song song, ActivityOptionsCompat optionsCompat, Bitmap bitmap);
     }
 }

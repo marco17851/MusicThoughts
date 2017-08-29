@@ -1,13 +1,23 @@
 package com.marcobarragan.thoughtmusic.songs;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.app.NotificationCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.marcobarragan.thoughtmusic.R;
@@ -92,7 +102,7 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
     }
 
     @Override
-    public void onClick(Song song, ActivityOptionsCompat options) {
+    public void onClick(Song song, ActivityOptionsCompat options, Bitmap bitmap) {
         Bundle bundle = new Bundle();
         bundle.putString("name", song.getTitle());
         bundle.putString("description", song.getDescription());
@@ -101,6 +111,32 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
 
         Intent intent = new Intent(this, MusicPlayerActivity.class);
         intent.putExtras(bundle);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder mBuilder = getBuilder(song, bitmap, pendingIntent);
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = mBuilder.build();
+        mNotificationManager.notify(001, notification);
+
+
+//        Intent activityIntent = new Intent(this, MusicPlayerActivity.class);
+//        activityIntent.putExtras(bundle);
         startActivity(intent, options.toBundle());
+    }
+
+    @NonNull
+    private NotificationCompat.Builder getBuilder(Song song, Bitmap bitmap, PendingIntent pendingIntent) {
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(song.getTitle())
+                .setContentText(song.getType())
+                .setLargeIcon(bitmap)
+//                .addAction(R.drawable.ic_previous, "Previous", null)
+//                .addAction(R.drawable.ic_pause, "Pause", null)
+//                .addAction(R.drawable.ic_next, "Next", null)
+                .setStyle(new NotificationCompat.MediaStyle());
+        return mBuilder;
     }
 }

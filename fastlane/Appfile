@@ -1,0 +1,2 @@
+json_key_file "/Users/MarcoBarragan/Desktop/Google Play Keys/fastlane-thoughtmusic.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
+package_name "com.marcobarragan.thoughtmusic" # e.g. com.krausefx.app

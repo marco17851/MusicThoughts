@@ -129,7 +129,7 @@ public class SongsActivity extends AppCompatActivity implements SongsContract.Vi
     private NotificationCompat.Builder getBuilder(Song song, Bitmap bitmap, PendingIntent pendingIntent) {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher)
+        mBuilder.setSmallIcon(R.drawable.ic_stat_music_player)
                 .setContentTitle(song.getTitle())
                 .setContentText(song.getType())
                 .setLargeIcon(bitmap)

@@ -16,17 +16,15 @@ platform :android do
   lane :beta do
     gradle(task: "assembleRelease")
     crashlytics(
-      api_token: "523aebc723e9e053cb52acbf80207bffcef2a9c4",
-      build_secret: "8f233e412fcfc01cfda9315b7dd394f61d7104fc3ea1968f27a334870e119ea7"
+      api_token: System.getenv("CRASHLYTICS_API_TOKEN"),
+      build_secret: System.getenv("CRASHLYTICS_BUILD_SECRET")
     )
 
     # upload to HockeyApp
     hockey(
-      api_token: "e5dddc94a8b94690bc12fbd0750f3a6e"
+      api_token: System.getenv("HOCKEY_API_TOKEN")
     )
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
   end
 
   desc "Deploy a new version to the Google Play"
@@ -39,10 +37,6 @@ platform :android do
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
   end
 
   error do |lane, exception|

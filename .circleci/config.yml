@@ -24,6 +24,10 @@ jobs:
     steps:
       - checkout
 
+#      - run:
+#          name: Setup Keystore
+#          command: ./scripts/decode_keystore.sh
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -44,3 +48,7 @@ jobs:
       - run:
           name: Unit Tests
           command: ./gradlew test
+
+      - run:
+          name: Fastlane Beta
+          command: fastlane beta

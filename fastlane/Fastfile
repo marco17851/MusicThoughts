@@ -1,16 +1,3 @@
-# Customise this file, documentation can be found here:
-# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
-# All available actions: https://docs.fastlane.tools/actions
-# can also be listed using the `fastlane actions` command
-
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
 fastlane_version "2.53.0"
 
 default_platform :android
@@ -28,11 +15,14 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "assembleRelease")
-    crashlytics
+    crashlytics(
+      api_token: "523aebc723e9e053cb52acbf80207bffcef2a9c4",
+      build_secret: "8f233e412fcfc01cfda9315b7dd394f61d7104fc3ea1968f27a334870e119ea7"
+    )
 
     # upload to HockeyApp
     hockey(
-      # api_token: "YOUR_API_TOKEN"
+      api_token: "e5dddc94a8b94690bc12fbd0750f3a6e"
     )
 
     # sh "your_script.sh"
@@ -62,10 +52,3 @@ platform :android do
     # )
   end
 end
-
-
-# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
-# All available actions: https://docs.fastlane.tools/actions
-
-# fastlane reports which actions are used. No personal data is recorded. 
-# Learn more at https://github.com/fastlane/fastlane#metrics

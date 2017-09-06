@@ -49,3 +49,9 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+
+# Fastlane/Fabric
+app/fabric.properties
+fastlane/README.md
+fastlane/report.xml
+fastlane/metadata

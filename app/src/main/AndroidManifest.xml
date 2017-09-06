@@ -31,6 +31,10 @@
             android:theme="@style/MusicPlayer">
 
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="523aebc723e9e053cb52acbf80207bffcef2a9c4"
+            />
     </application>
 
 </manifest>

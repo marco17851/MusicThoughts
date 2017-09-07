@@ -39,6 +39,10 @@ jobs:
           name: Download Dependencies
           command: ./gradlew androidDependencies
 
+      - run:
+          name: Fastlane Beta
+          command: fastlane beta
+
       - save_cache:
           paths:
             - ~/.m2
@@ -48,7 +52,3 @@ jobs:
       - run:
           name: Unit Tests
           command: ./gradlew test
-
-      - run:
-          name: Fastlane Beta
-          command: fastlane beta

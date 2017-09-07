@@ -14,10 +14,10 @@ android {
     signingConfigs {
         release {
 //            if (System.getenv()["CI"]) {
-                keyAlias System.getenv("KEY_ALIAS")
-                keyPassword System.getenv("KEY_PASSWORD")
-                storePassword System.getenv("STORE_PASSWORD")
-                storeFile file(System.getenv("STORE_FILE"))
+//                keyAlias System.getenv("KEY_ALIAS")
+//                keyPassword System.getenv("KEY_PASSWORD")
+//                storePassword System.getenv("STORE_PASSWORD")
+//                storeFile file('/Users/MarcoBarragan/Desktop/Google Play Keys/thoughtmusic.jks')
 //            } else {
 //                def properties = new Properties()
 //                file("signing.properties").withInputStream { properties.load(it) }

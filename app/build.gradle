@@ -15,8 +15,12 @@ android {
         release {
             keyAlias 'ThoughtMusicKey'
             keyPassword 'tmkey101'
-            storeFile file('/Users/MarcoBarragan/Desktop/Google Play Keys/thoughtmusic.jks')
             storePassword 'tmkeystore101'
+            if (System.getenv()["CI"]) {
+                storeFile file(System.getenv()["NC_STORE_FILE"])
+            } else {
+                storeFile file('/Users/MarcoBarragan/Desktop/Google Play Keys/thoughtmusic.jks')
+            }
         }
     }
     compileSdkVersion 25

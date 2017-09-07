@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: Setup Keystore
-          command: ./scripts/decode_keystore.sh
+          command: bash ./scripts/decode_keystore.sh
 
       # Download and cache dependencies
       - restore_cache:

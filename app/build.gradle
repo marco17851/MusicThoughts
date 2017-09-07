@@ -13,19 +13,19 @@ apply plugin: 'io.fabric'
 android {
     signingConfigs {
         release {
-            if (System.getenv()["CI"]) {
-                keyAlias System.getenv()["NC_KEY_ALIAS"]
-                keyPassword System.getenv()["NC_KEY_PASSWORD"]
-                storePassword System.getenv()["NC_STORE_PASSWORD"]
-                storeFile file(System.getenv()["NC_STORE_FILE"])
-            } else {
-                def properties = new Properties()
-                file("signing.properties").withInputStream { properties.load(it) }
-                keyAlias properties.getProperty("KEY_ALIAS")
-                keyPassword properties.getProperty("KEY_PASSWORD")
-                storePassword properties.getProperty("STORE_PASSWORD")
-                storeFile file(properties.getProperty("STORE_FILE"))
-            }
+//            if (System.getenv()["CI"]) {
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+                storePassword System.getenv("STORE_PASSWORD")
+                storeFile file(System.getenv("STORE_FILE"))
+//            } else {
+//                def properties = new Properties()
+//                file("signing.properties").withInputStream { properties.load(it) }
+//                keyAlias properties.getProperty("KEY_ALIAS")
+//                keyPassword properties.getProperty("KEY_PASSWORD")
+//                storePassword properties.getProperty("STORE_PASSWORD")
+//                storeFile file(properties.getProperty("STORE_FILE"))
+//            }
         }
     }
     compileSdkVersion 25

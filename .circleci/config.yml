@@ -25,6 +25,10 @@ jobs:
       - checkout
 
       - run:
+          name: Install Fastlane
+          command: sudo gem install fastlane
+
+      - run:
           name: Setup Keystore
           command: bash ./scripts/decode_keystore.sh
 

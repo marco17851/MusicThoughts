@@ -24,9 +24,9 @@ jobs:
     steps:
       - checkout
 
-#      - run:
-#          name: Setup Keystore
-#          command: ./scripts/decode_keystore.sh
+      - run:
+          name: Setup Keystore
+          command: ./scripts/decode_keystore.sh
 
       # Download and cache dependencies
       - restore_cache:

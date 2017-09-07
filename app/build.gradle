@@ -13,13 +13,18 @@ apply plugin: 'io.fabric'
 android {
     signingConfigs {
         release {
-            keyAlias 'ThoughtMusicKey'
-            keyPassword 'tmkey101'
-            storePassword 'tmkeystore101'
             if (System.getenv()["CI"]) {
+                keyAlias System.getenv()["NC_KEY_ALIAS"]
+                keyPassword System.getenv()["NC_KEY_PASSWORD"]
+                storePassword System.getenv()["NC_STORE_PASSWORD"]
                 storeFile file(System.getenv()["NC_STORE_FILE"])
             } else {
-                storeFile file('/Users/MarcoBarragan/Desktop/Google Play Keys/thoughtmusic.jks')
+                def properties = new Properties()
+                file("signing.properties").withInputStream { properties.load(it) }
+                keyAlias properties.getProperty("KEY_ALIAS")
+                keyPassword properties.getProperty("KEY_PASSWORD")
+                storePassword properties.getProperty("STORE_PASSWORD")
+                storeFile file(properties.getProperty("STORE_FILE"))
             }
         }
     }

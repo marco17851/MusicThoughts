@@ -19,13 +19,14 @@ android {
 //                storePassword System.getenv()["NC_STORE_PASSWORD"]
 //                storeFile file(System.getenv()["NC_STORE_FILE"]
 //            } else {
+            if (!System.getenv("USING_CI")){
                 def properties = new Properties()
                 file("signing.properties").withInputStream { properties.load(it) }
                 keyAlias properties.getProperty("KEY_ALIAS")
                 keyPassword properties.getProperty("KEY_PASSWORD")
                 storePassword properties.getProperty("STORE_PASSWORD")
                 storeFile file(properties.getProperty("STORE_FILE"))
-//            }
+            }
         }
     }
     compileSdkVersion 25
@@ -34,7 +35,7 @@ android {
         applicationId 'com.marcobarragan.thoughtmusic'
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 9
+        versionCode 10
         versionName "1.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

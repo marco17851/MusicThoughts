@@ -1,3 +1,5 @@
 This is the mobile set's final project. Not intended for actual use.
 
-Images and data are downloaded from a local API. Future work to bring that API live.
+Images and data are downloaded from a local API.
+
+Working with fastlane deployments and CI deployments without fastlane.

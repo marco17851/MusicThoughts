@@ -4,13 +4,24 @@ default_platform :android
 
 platform :android do
 
+  desc "Run tests"
+  lane :test do
+    gradle(task: "assembleAndroidTest")
+  end
+
   desc "Deploy a new version to the Google Play"
   lane :supply_data do
-    gradle(task: "assembleRelease")
-    gradle(task: "assembleAndroidTest")
+    test
     supply(
         skip_upload_apk: true
     )
+  end
+
+  lane :deploy do
+    gradle(task: "assembleRelease")
+    test
+    increment_version_code
+    supply
   end
 
 end

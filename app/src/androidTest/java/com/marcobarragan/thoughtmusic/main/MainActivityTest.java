@@ -20,6 +20,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import tools.fastlane.screengrab.Screengrab;
+import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy;
 import tools.fastlane.screengrab.locale.LocaleTestRule;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -57,9 +59,14 @@ public class MainActivityTest {
 
     @Test
     public void shouldAllowUsersToNavigateThrough(){
+        Screengrab.setDefaultScreenshotStrategy(new UiAutomatorScreenshotStrategy());
+
         Matcher<View> categoryStrip = ViewMatchers.withId(R.id.categories_title_strip);
+
         onView(categoryStrip).perform(swipeLeft());
+        Screengrab.screenshot("albums");
         onView(categoryStrip).perform(swipeLeft());
+        Screengrab.screenshot("genres");
         onView(categoryStrip).perform(swipeRight());
         onView(categoryStrip).perform(swipeRight());
 
@@ -74,6 +81,7 @@ public class MainActivityTest {
 
         Matcher<View> controlButton = withId(R.id.play_pause_button);
         onView(controlButton).check(matches(isDisplayed()));
+        Screengrab.screenshot("music_player");
 
         device.openNotification();
         device.wait(Until.hasObject(By.text("Boombayah")), TIMEOUT);
@@ -93,6 +101,7 @@ public class MainActivityTest {
         Matcher<View> genreView = allOf(withId(R.id.genre_list_title), isDisplayed(), withText("Pop"));
         onView(genreView).perform(click());
 
+        Screengrab.screenshot("pop_songs");
         Matcher<View> songsView = withId(R.id.songs_recycler_view);
         onView(songsView).perform(RecyclerViewActions.scrollToPosition(4));
 
